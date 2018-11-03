@@ -1,0 +1,66 @@
+.home {
+    width: 100%;
+    margin-top: 80px;
+
+    &--company {
+        min-height: 50vh;  
+        background: #1b1b1b;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &--application {
+        min-height: 50vh;  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &--info {
+        height: 70%;
+        width: 40%;
+        margin: 30px auto;
+        max-width: 900px;
+        text-align: left;
+    }
+
+    &--title { 
+        margin-top: 0;
+        font-size: 4rem;
+        position: relative;
+        font-weight: 500;
+
+        &:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #76bd1d;
+        }
+    }
+
+    &--text {
+        font-size: 1rem;
+    }
+
+    &--link {
+        display: block;
+        margin: 70px auto 0 auto;
+        padding: 20px 0;
+        width: 200px;
+        background-color: #1b1b1b;
+        font-size: 1.1rem;
+        color: #fff;
+        text-align: center;
+        border-radius: 3px;
+        line-height: 1.1rem;
+
+        &:hover { 
+            color: #76bd1d;
+        }
+    }
+}
