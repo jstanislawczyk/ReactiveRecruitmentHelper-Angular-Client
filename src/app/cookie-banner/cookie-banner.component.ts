@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { CookieBannerDisplayService } from '../services/cookie-banner-display.service';
+
 
 @Component({
   selector: 'app-cookie-banner',
@@ -8,26 +10,46 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class CookieBannerComponent implements OnInit {
 
+  @ViewChild('cookieBanner') cookieBanner;
+
   cookieBannerDisplay:Boolean = true;
 
-  constructor(private cookieService:CookieService) { }
+  constructor(
+    private cookieService:CookieService, 
+    private cookieBannerDisplayService:CookieBannerDisplayService
+  ) { }
 
   ngOnInit() {
     this.checkCookieBannerDisplay();
   }
 
+  ngDoCheck() {
+    this.checkCookieBannerHeight();
+  }
+  
   checkCookieBannerDisplay() {
     if(this.cookieBannerShouldBeHidden()) {
-      this.cookieBannerDisplay = false;
+      this.hideCookieBanner();
     }
+  }
+
+  checkCookieBannerHeight() {
+    setTimeout(() => {
+      this.cookieBannerDisplayService.changeCookieBannerHeightState(this.cookieBanner.nativeElement.offsetHeight);
+    })
+  }
+
+  cookieBannerShouldBeHidden() {
+    return this.cookieService.get('cookie-banner-display') === 'false';
   }
 
   closeCookieBanner() {
     this.cookieService.set('cookie-banner-display', 'false', 30);
-    this.cookieBannerDisplay = false;
+    this.hideCookieBanner();
   } 
 
-  cookieBannerShouldBeHidden() {
-    return this.cookieService.get('cookie-banner-display') == 'false';
+  hideCookieBanner() {
+    this.cookieBannerDisplay = false;
+    this.cookieBannerDisplayService.changeCookieBannerDisplayState(false);
   }
 }

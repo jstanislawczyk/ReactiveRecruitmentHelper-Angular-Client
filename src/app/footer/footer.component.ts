@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieBannerDisplayService } from '../services/cookie-banner-display.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  cookieBannerDisplay:Boolean;
+  cookieBannerHeight:Number;
+
+  constructor(private cookieBannerDisplayService: CookieBannerDisplayService) { }
 
   ngOnInit() {
-  }
+    this.cookieBannerDisplayService.currentCookieBannerDisplayState
+      .subscribe(displayState => this.cookieBannerDisplay = displayState);
 
+    this.cookieBannerDisplayService.currentCookieBannerHeight
+      .subscribe(height => this.cookieBannerHeight = height);
+  }
 }
