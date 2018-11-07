@@ -1,12 +1,12 @@
 # ReactiveRecruitmentHelperAngularClient
 
-
+This is simple Angular client for my reactive [app](https://github.com/xenonso/ReactiveRecruitmentHelper)
 
 ## Technology stack
 
-**Angular 7 (with CLI and routing)
-**SCSS
-**TypeScript
+* Angular 7 (with CLI and routing)
+* SCSS
+* TypeScript
 
 ## Development server
 
