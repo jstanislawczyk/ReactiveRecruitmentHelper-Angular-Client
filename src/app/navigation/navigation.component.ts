@@ -7,16 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class NavigationComponent implements OnInit {
-
-  mobileSidebarOpened:Boolean = false;
-
   constructor() { }
 
   ngOnInit() {
   }
-
-  handleMobileSidebarVisibility() {
-    this.mobileSidebarOpened = !this.mobileSidebarOpened;
-  }
-
 }

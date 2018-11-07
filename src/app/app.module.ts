@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { ApplicationComponent } from './application/application.component';
 import { CookieBannerComponent } from './cookie-banner/cookie-banner.component';
 import { CookieService } from 'ngx-cookie-service';
+import { NavigationDesktopComponent } from './navigation/navigation-desktop/navigation-desktop.component';
+import { NavigationMobileComponent } from './navigation/navigation-mobile/navigation-mobile.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CookieService } from 'ngx-cookie-service';
     FooterComponent,
     HomeComponent,
     ApplicationComponent,
-    CookieBannerComponent
+    CookieBannerComponent,
+    NavigationDesktopComponent,
+    NavigationMobileComponent
   ],
   imports: [
     BrowserModule,

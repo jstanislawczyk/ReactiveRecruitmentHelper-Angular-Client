@@ -1,0 +1,51 @@
+.desktop-nav { 
+    display: none;
+}
+
+@media screen and (min-width: 1025px) {
+    .desktop-nav {
+        height: 80px;
+        width: 100%;
+        margin: 0 auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #1b1b1b;
+        color: #fff;
+
+        &--hamburger {
+            display: none;
+        }
+
+        &--title {
+            margin-left: 150px;
+            font-size: 2em;
+            color: #fff;
+        }
+
+        &--list {
+            list-style-type: none;
+            margin: 0; 
+            padding: 0;
+        }
+    
+        &--list-element {
+            float: left;
+        }
+    
+        &--link {
+            padding: 30px 1.5em;
+            text-transform: uppercase;
+            font-size: .9em;
+            color: #fff;
+    
+            &:hover {
+                color: #76bd1d;
+            }
+        }     
+    }
+}
