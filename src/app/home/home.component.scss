@@ -1,34 +1,30 @@
+@import '../../style-variables.scss';
+
 .home {
     width: 100%;
     margin-top: 80px;
 
     &--company {
         min-height: 50vh;  
-        background: #1b1b1b;
+        background: $dark-grey;
         color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     &--application {
-        min-height: 50vh;  
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        min-height: 50vh;
     }
 
     &--info {
         height: 70%;
-        width: 40%;
+        width: 80%;
         margin: 30px auto;
-        max-width: 900px;
         text-align: left;
+        max-width: 900px;
     }
 
     &--title { 
         margin-top: 0;
-        font-size: 4rem;
+        font-size: 2rem;
         position: relative;
         font-weight: 500;
 
@@ -39,20 +35,21 @@
             bottom: 0;
             width: 40px;
             height: 2px;
-            background-color: #76bd1d;
+            background-color: $pear-green;
         }
     }
 
     &--text {
         font-size: 1rem;
+        margin-bottom: 70px;
     }
 
     &--link {
         display: block;
-        margin: 70px auto 0 auto;
+        margin: 0 auto 30px auto;
         padding: 20px 0;
         width: 200px;
-        background-color: #1b1b1b;
+        background-color: $dark-grey;
         font-size: 1.1rem;
         color: #fff;
         text-align: center;
@@ -60,7 +57,40 @@
         line-height: 1.1rem;
 
         &:hover { 
-            color: #76bd1d;
+            color: $pear-green;
         }
     }
 }
+
+@media screen and (min-width: $tablet) {
+    .home {
+        &--company {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &--application {
+            min-height: 50vh;  
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &--info {
+            width: 60%;
+        }
+
+        &--title { 
+            font-size: 4rem;
+        }
+    }
+}    
+
+@media screen and (min-width: $desktop) {
+    .home {
+        &--info {
+            width: 40%;
+        }
+    }
+}    
