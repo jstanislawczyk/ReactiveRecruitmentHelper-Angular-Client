@@ -1,16 +1,18 @@
+@import '../../style-variables.scss';
+
 .cookie-banner {
     position: fixed;
     left: 0;
     bottom: 0;
     z-index: 10;
     width: 100%;
-    background: #1b1b1b;
+    background: $dark-grey;
     height: auto;
     display: flex;
 
     &--info {
         width: 80%;
-        margin-left: 50px;
+        margin-left: 20px;
         font-size: .8rem;
         color: #fff;
     }
@@ -20,14 +22,14 @@
         color: #fff;
 
         &:hover {
-            color: #76bd1d;
+            color: $pear-green;
             cursor: pointer;
         }
     }
 
     &--close{
         position: absolute;
-        right: 30px;
+        right: 20px;
         display: inline-block;
         width: 20px;
         height: 20px;
@@ -48,7 +50,6 @@
         }
 
         &::before {
-
             transform: rotate(45deg);
         }
 
@@ -58,8 +59,20 @@
 
         &:hover {
             &::before, &::after {
-                background: #76bd1d;
+                background: $pear-green;
             }
         }
     }    
+}
+
+@media (min-width: $desktop) {
+    .cookie-banner {
+        &--info {
+            margin-left: 50px;
+        }
+
+        &--close {
+            margin-right: 30px;
+        }
+    }
 }

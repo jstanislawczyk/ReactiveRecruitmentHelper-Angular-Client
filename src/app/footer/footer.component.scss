@@ -1,11 +1,13 @@
+@import '../../style-variables.scss';
+
 .footer {
     height: 60px;
     width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background: #1b1b1b;
+    justify-content: space-around;
+    background: $dark-grey;
     color: #fff;
 
     &--list {
@@ -19,13 +21,31 @@
     }
 
     &--link {
-        padding: 15px 1.6em 15px 1.6em;
+        padding: 15px 8px 15px 8px;
         text-transform: uppercase;
         font-size: .7em;
         color: #fff;
 
         &:hover {
-            color: #76bd1d;
+            color: $pear-green;
         }
     }     
+}
+
+@media (min-width: $tablet) {
+    .footer { 
+        &--link {
+            padding: 15px 30px 15px 30px;
+        }    
+    }
+}
+
+@media (min-width: $desktop) {
+    .footer { 
+        justify-content: space-between;
+
+        &--link {
+            padding: 15px 20px 15px 20px;
+        }    
+    }
 }
