@@ -1,3 +1,5 @@
+@import '../../../style-variables.scss';
+
 .mobile-nav {
     height: 80px;
     width: 100%;
@@ -9,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #1b1b1b;
+    background: $dark-grey;
     color: #fff;
 
     &--hamburger {
@@ -41,7 +43,7 @@
         position: fixed;
         left: -320px;
         top: 0;
-        background: #1b1b1b;
+        background: $dark-grey;
         transition: transform .4s linear;
         border-right: 2px solid #fff;
 
@@ -105,7 +107,7 @@
     }  
 }    
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $tablet) {
     .mobile-nav {
         &--title {
             font-size: 2em;
@@ -113,7 +115,7 @@
     }    
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: $desktop) {
     .mobile-nav {
         display: none;
     }
