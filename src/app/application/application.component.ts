@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-application',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicationComponent implements OnInit {
 
-  constructor() { }
+  applicationForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { 
+    this.applicationForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      jobPosition: ['', Validators.required],
+      experienceYears: ['', Validators.required],
+      message: ['', Validators.required]
+    })
+  }
 
   ngOnInit() {
   }
 
+  sendApplication() {
+
+  }
 }
