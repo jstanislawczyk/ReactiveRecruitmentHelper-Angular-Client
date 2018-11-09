@@ -10,14 +10,14 @@
     height: auto;
     display: flex;
 
-    &--info {
+    &__info {
         width: 80%;
         margin-left: 20px;
         font-size: .8rem;
         color: #fff;
     }
 
-    &--policy {
+    &__policy {
         text-decoration: underline;
         color: #fff;
 
@@ -27,7 +27,7 @@
         }
     }
 
-    &--close{
+    &__close{
         position: absolute;
         right: 20px;
         display: inline-block;
@@ -67,11 +67,11 @@
 
 @media (min-width: $desktop) {
     .cookie-banner {
-        &--info {
+        &__info {
             margin-left: 50px;
         }
 
-        &--close {
+        &__close {
             margin-right: 30px;
         }
     }

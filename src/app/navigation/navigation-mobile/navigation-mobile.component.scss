@@ -14,7 +14,7 @@
     background: $dark-grey;
     color: #fff;
 
-    &--hamburger {
+    &__hamburger {
         width: 30px;
         height: 20px;
         position: absolute;
@@ -32,12 +32,12 @@
         }
     }
 
-    &--title {
+    &__title {
         font-size: 1.4em;
         color: #fff;
     }
 
-    &--navigation {
+    &__navigation {
         width: 320px;
         height: 100vh;
         position: fixed;
@@ -47,16 +47,16 @@
         transition: transform .4s linear;
         border-right: 2px solid #fff;
 
-        &.mobile-nav--navigation-opened {  
+        &.mobile-nav__navigation-opened {  
             transform: translateX(320px);
         }
 
-        &.mobile-nav--navigation-closed {  
+        &.mobile-nav__navigation-closed {  
             transform: translateX(-320px);
         }
     }
 
-    &--overlay {
+    &__overlay {
         position: fixed;
         top: 0;
         left: 0;
@@ -65,7 +65,7 @@
         background: rgba(27, 27, 27, 0.8);
     }
 
-    &--sidebar-close {
+    &__sidebar-close {
         width: 140px;
         height: 40px;
         margin-left: 40px;
@@ -89,11 +89,11 @@
         }
     }
 
-    &--list {
+    &__list {
         list-style-type: none;
     }    
 
-    &--list-element {
+    &__list-element {
         margin-top: 20px;
 
         &:first-child {
@@ -101,7 +101,7 @@
         }
     }
 
-    &--link {
+    &__link {
         font-size: 1.5em;
         color: #fff;
     }  
@@ -109,7 +109,7 @@
 
 @media screen and (min-width: $tablet) {
     .mobile-nav {
-        &--title {
+        &__title {
             font-size: 2em;
         }
     }    

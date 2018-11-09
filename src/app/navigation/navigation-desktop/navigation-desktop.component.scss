@@ -19,27 +19,27 @@
         background: $dark-grey;
         color: #fff;
 
-        &--hamburger {
+        &__hamburger {
             display: none;
         }
 
-        &--title {
+        &__title {
             margin-left: 150px;
             font-size: 2em;
             color: #fff;
         }
 
-        &--list {
+        &__list {
             list-style-type: none;
             margin: 0; 
             padding: 0;
         }
     
-        &--list-element {
+        &__list-element {
             float: left;
         }
     
-        &--link {
+        &__link {
             padding: 30px 1.5em;
             text-transform: uppercase;
             font-size: .9em;

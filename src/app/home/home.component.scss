@@ -4,17 +4,17 @@
     width: 100%;
     margin-top: 80px;
 
-    &--company {
+    &__company {
         min-height: 50vh;  
         background: $dark-grey;
         color: #fff;
     }
 
-    &--application {
+    &__application {
         min-height: 50vh;
     }
 
-    &--info {
+    &__info {
         height: 70%;
         width: 80%;
         margin: 30px auto;
@@ -22,7 +22,7 @@
         max-width: 900px;
     }
 
-    &--title { 
+    &__title { 
         margin-top: 0;
         font-size: 2rem;
         position: relative;
@@ -39,12 +39,12 @@
         }
     }
 
-    &--text {
+    &__text {
         font-size: 1rem;
         margin-bottom: 70px;
     }
 
-    &--link {
+    &__link {
         display: block;
         margin: 0 auto 30px auto;
         padding: 20px 0;
@@ -64,24 +64,24 @@
 
 @media screen and (min-width: $tablet) {
     .home {
-        &--company {
+        &__company {
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        &--application {
+        &__application {
             min-height: 50vh;  
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        &--info {
+        &__info {
             width: 60%;
         }
 
-        &--title { 
+        &__title { 
             font-size: 4rem;
         }
     }
@@ -89,7 +89,7 @@
 
 @media screen and (min-width: $desktop) {
     .home {
-        &--info {
+        &__info {
             width: 40%;
         }
     }

@@ -7,29 +7,29 @@
     align-items: center;
     width: 80%;
 
-    &--form {
+    &__form {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
     } 
 
-    &--title {
+    &__title {
         margin-top: 40px;
         font-weight: 500;
     }
 
-    &--input-label {
+    &__input-label {
         width: 100%;
         max-width: 300px;
     }
 
-    &--input-title {
+    &__input-title {
         margin-top: 30px;
         margin-bottom: 5px;
     }
 
-    &--input {
+    &__input {
         width: 100%;
         height: 30px;
         background-color: #efefef;
@@ -54,7 +54,7 @@
         }
     }
 
-    &--submit {
+    &__submit {
         display: block;
         margin: 30px auto;
         padding: 20px 0;
@@ -77,15 +77,15 @@
 
 @media (min-width: $tablet) {
     .application {  
-        &--title {
+        &__title {
             font-size: 2rem;
         }
 
-        &--input-label {
+        &__input-label {
             max-width: 400px;
         }
     
-        &--input {
+        &__input {
             height: 40px;
             font-size: 1rem;
 
@@ -94,7 +94,7 @@
             }
         }
 
-        &--submit {
+        &__submit {
             margin: 40px auto;
         }
     }   
@@ -102,15 +102,15 @@
 
 @media (min-width: $desktop) {
     .application {  
-        &--title {
+        &__title {
             font-size: 2.5rem;
         }
 
-        &--input-label {
+        &__input-label {
             max-width: 800px;
         }
     
-        &--input {
+        &__input {
             font-size: 1.2rem;
 
             &__textarea {
@@ -118,7 +118,7 @@
             }
         }
 
-        &--submit {
+        &__submit {
             margin: 50px auto;
         }
     }   

@@ -1,24 +1,24 @@
 <div class="mobile-nav">
-  <div (click)="handleMobileSidebarVisibility()" class="mobile-nav--hamburger">
-    <div class="mobile-nav--hamburger-line"></div>
-    <div class="mobile-nav--hamburger-line"></div>
-    <div class="mobile-nav--hamburger-line"></div>
+  <div (click)="handleMobileSidebarVisibility()" class="mobile-nav__hamburger">
+    <div class="mobile-nav__hamburger-line"></div>
+    <div class="mobile-nav__hamburger-line"></div>
+    <div class="mobile-nav__hamburger-line"></div>
   </div>
 
-  <a routerLink="/" class="mobile-nav--title">Recruitment Helper</a>
+  <a routerLink="/" class="mobile-nav__title">Recruitment Helper</a>
 
-  <div [ngClass]="{'mobile-nav--overlay': mobileSidebarOpened}">
-    <nav [ngClass]="mobileSidebarOpened ? 'mobile-nav--navigation-opened' : 'mobile-nav--navigation-closed'" class="mobile-nav--navigation">
-      <h2 (click)="handleMobileSidebarVisibility()" class="mobile-nav--sidebar-close">
-        <div class="mobile-nav--sidebar-close-arrow"></div>
+  <div [ngClass]="{'mobile-nav__overlay': mobileSidebarOpened}">
+    <nav [ngClass]="mobileSidebarOpened ? 'mobile-nav__navigation-opened' : 'mobile-nav__navigation-closed'" class="mobile-nav__navigation">
+      <h2 (click)="handleMobileSidebarVisibility()" class="mobile-nav__sidebar-close">
+        <div class="mobile-nav__sidebar-close-arrow"></div>
         Close
       </h2>
-      <ul class="mobile-nav--list">
-        <li class="mobile-nav--list-element">
-          <a (click)="handleMobileSidebarVisibility()" routerLink="/" class="mobile-nav--link">Home</a>
+      <ul class="mobile-nav__list">
+        <li class="mobile-nav__list-element">
+          <a (click)="handleMobileSidebarVisibility()" routerLink="/" class="mobile-nav__link">Home</a>
         </li>
-        <li class="mobile-nav--list-element">
-          <a (click)="handleMobileSidebarVisibility()" routerLink="/application" class="mobile-nav--link">Application</a>
+        <li class="mobile-nav__list-element">
+          <a (click)="handleMobileSidebarVisibility()" routerLink="/application" class="mobile-nav__link">Application</a>
         </li>
       </ul>
     </nav>

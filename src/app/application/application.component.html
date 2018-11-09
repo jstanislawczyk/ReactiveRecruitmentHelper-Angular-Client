@@ -1,10 +1,10 @@
 <section class="application">
-  <h2 class="application--title">Send your application</h2>
+  <h2 class="application__title">Send your application</h2>
 
-  <form class="application--form" [formGroup]="applicationForm" (ngSubmit)="sendApplication()">
-    <label class="application--input-label">
-      <p class="application--input-title">First Name:</p>
-      <input class="application--input" type="text" formControlName="firstName" placeholder="John" />
+  <form class="application__form" [formGroup]="applicationForm" (ngSubmit)="sendApplication()">
+    <label class="application__input-label">
+      <p class="application__input-title">First Name:</p>
+      <input class="application__input" type="text" formControlName="firstName" placeholder="John" />
       <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
         <div *ngIf="applicationForm.controls.name.errors.required">
           First name is required
@@ -12,9 +12,9 @@
       </div>
     </label>
 
-    <label class="application--input-label">
-      <p class="application--input-title">Last Name:</p>
-      <input class="application--input" type="text" formControlName="lastName" placeholder="Smith" />
+    <label class="application__input-label">
+      <p class="application__input-title">Last Name:</p>
+      <input class="application__input" type="text" formControlName="lastName" placeholder="Smith" />
       <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
         <div *ngIf="applicationForm.controls.name.errors.required">
           Last name is required
@@ -22,9 +22,9 @@
       </div>
     </label>
 
-    <label class="application--input-label">
-      <p class="application--input-title">Job position:</p>
-      <input class="application--input" type="text" formControlName="jobPosition" placeholder="Junior Java" />
+    <label class="application__input-label">
+      <p class="application__input-title">Job position:</p>
+      <input class="application__input" type="text" formControlName="jobPosition" placeholder="Junior Java" />
       <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
         <div *ngIf="applicationForm.controls.name.errors.required">
           Job position is required
@@ -32,9 +32,9 @@
       </div>
     </label>
 
-    <label class="application--input-label">
-      <p class="application--input-title">Experience years:</p>
-      <input class="application--input" type="number" formControlName="experienceYears" placeholder="5" />
+    <label class="application__input-label">
+      <p class="application__input-title">Experience years:</p>
+      <input class="application__input" type="number" formControlName="experienceYears" placeholder="5" />
       <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
         <div *ngIf="applicationForm.controls.name.errors.required">
           Experience years are required
@@ -42,9 +42,9 @@
       </div>
     </label>
 
-    <label class="application--input-label">
-      <p class="application--input-title">Additional message:</p>
-      <textarea class="application--input application--input__textarea" formControlName="message" placeholder="Your message (0-200)"></textarea>
+    <label class="application__input-label">
+      <p class="application__input-title">Additional message:</p>
+      <textarea class="application__input application__input__textarea" formControlName="message" placeholder="Your message (0-200)"></textarea>
       <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
         <div *ngIf="applicationForm.controls.name.errors.required">
           Too many letters
@@ -52,6 +52,6 @@
       </div>
     </label>
 
-    <input type="submit" value="Send" class="application--submit">
+    <input type="submit" value="Send" class="application__submit">
   </form>
 </section>  
