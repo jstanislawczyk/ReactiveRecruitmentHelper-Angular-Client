@@ -34,7 +34,7 @@
 
     <label class="application__input-label">
       <p class="application__input-title">Experience years:</p>
-      <input class="application__input" type="number" formControlName="experienceYears" placeholder="5" />
+      <input class="application__input" type="number" formControlName="experienceYears" placeholder="5"/>
       <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
         <div *ngIf="applicationForm.controls.name.errors.required">
           Experience years are required
@@ -43,8 +43,20 @@
     </label>
 
     <label class="application__input-label">
+      <p class="application__input-title">Technology and knowledge level:</p>
+
+      <div *ngFor="let size of technologyInputGroupSize" class="application__input-group">
+        <input class="application__input application__input--medium" type="text" formControlName="technologyName" placeholder="Java" />
+        <input class="application__input application__input--small" type="number" formControlName="technologyKnowledgeLevel" placeholder="0-10" />
+      </div>
+
+      <button (click)="expandTechnologyInputGroup()" [ngClass]="{'application__input-group-button--disabled': extendButtonDisabled}" class="application__input-group-button">+</button>
+      <button (click)="decreaseTechnologyInputGroup()" *ngIf="decreaseButtonEnabled" class="application__input-group-button application__input-group-button--decrease">-</button>
+    </label>
+
+    <label class="application__input-label">
       <p class="application__input-title">Additional message:</p>
-      <textarea class="application__input application__input__textarea" formControlName="message" placeholder="Your message (0-200)"></textarea>
+      <textarea class="application__input application__input--textarea" formControlName="message" placeholder="Your message (0-200)"></textarea>
       <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
         <div *ngIf="applicationForm.controls.name.errors.required">
           Too many letters

@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     width: 80%;
+    min-height: 100vh;
 
     &__form {
         width: 100%;
@@ -22,11 +23,51 @@
     &__input-label {
         width: 100%;
         max-width: 300px;
+        position: relative;
     }
 
     &__input-title {
         margin-top: 30px;
         margin-bottom: 5px;
+    }
+
+    &__input-group {
+        margin-bottom: 30px;
+
+        &:last-child {    
+            margin-bottom: 0;
+        }
+    }
+
+    &__input-group-button {
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        bottom: 30px;
+        right: 0;
+        border: none;
+        border-radius: 3px;
+        background: #000;
+        font-size: 30px;
+        color: #fff;
+        
+        &--decrease {
+            bottom: 90px;  
+        }
+
+        &:hover {
+            color: $pear-green;
+            cursor: pointer;
+        }
+
+        &--disabled {
+            color: #666;
+
+            &:hover {
+                color: #666;
+                cursor: default;
+            }
+        }
     }
 
     &__input {
@@ -38,19 +79,28 @@
         border-radius: 3px;
         outline-width: 0;
 
-        &__textarea {
-            height: 130px;
-        }
-
         &:focus {
             box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
-            border: 2px solid #a5cda5;
+            border: 2px solid #76bd1d;
             background-color: #e9f3e9;
             color: #428c42;
             
             &::placeholder {
                 color: #428c42;
             }
+        }
+
+        &--textarea {
+            height: 130px;
+        }
+
+        &--medium {
+            width: 60%;
+        }
+
+        &--small {
+            width: 15%;
+            margin-left: 15px;
         }
     }
 
@@ -84,12 +134,21 @@
         &__input-label {
             max-width: 400px;
         }
+
+        &__input-group-button {
+            width: 46px;
+            height: 46px;
+
+            &--decrease {
+                bottom: 106px;  
+            }
+        }    
     
         &__input {
             height: 40px;
             font-size: 1rem;
 
-            &__textarea {
+            &--textarea {
                 height: 160px;
             }
         }
@@ -113,8 +172,12 @@
         &__input {
             font-size: 1.2rem;
 
-            &__textarea {
+            &--textarea {
                 height: 200px;
+            }
+
+            &--medium {
+                width: 70%;
             }
         }
 

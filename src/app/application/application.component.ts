@@ -9,6 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ApplicationComponent implements OnInit {
 
   applicationForm: FormGroup;
+  technologyInputGroupSize:Number[] = [1] 
+  maxInputGroupSize:Number = 4;
+  extendButtonDisabled: Boolean = false;
+  decreaseButtonEnabled: Boolean = false;
 
   constructor(private formBuilder: FormBuilder) { 
     this.applicationForm = this.formBuilder.group({
@@ -16,7 +20,9 @@ export class ApplicationComponent implements OnInit {
       lastName: ['', Validators.required],
       jobPosition: ['', Validators.required],
       experienceYears: ['', Validators.required],
-      message: ['', Validators.required]
+      message: ['', Validators.required],
+      technologyName: ['', Validators.required],
+      technologyKnowledgeLevel: ['', Validators.required]
     })
   }
 
@@ -25,5 +31,29 @@ export class ApplicationComponent implements OnInit {
 
   sendApplication() {
 
+  }
+
+  expandTechnologyInputGroup() {
+    if(this.technologyInputGroupSize.length < this.maxInputGroupSize) {
+      this.technologyInputGroupSize.push(1);
+
+      if(this.technologyInputGroupSize.length === 2) {
+        this.decreaseButtonEnabled = true;
+      }
+
+      if(this.technologyInputGroupSize.length === this.maxInputGroupSize) {
+        this.extendButtonDisabled = true;
+      }
+    } 
+  }
+
+  decreaseTechnologyInputGroup() {
+    if(this.technologyInputGroupSize.length === 2) {
+      this.decreaseButtonEnabled = false;
+    } else if(this.technologyInputGroupSize.length === this.maxInputGroupSize) {
+      this.extendButtonDisabled = false;
+    } 
+
+    this.technologyInputGroupSize.pop();   
   }
 }
