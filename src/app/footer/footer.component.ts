@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieBannerDisplayService } from '../services/cookie-banner-display.service';
+import { CookieBannerDisplayService } from '../services/cookie-banner-service/cookie-banner-display.service';
 
 @Component({
   selector: 'app-footer',

@@ -5,6 +5,9 @@
     margin-top: 80px;
 
     &__company {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         min-height: 50vh;  
         background: $dark-grey;
         color: #fff;
@@ -16,7 +19,7 @@
 
     &__info {
         height: 70%;
-        width: 80%;
+        width: 70%;
         margin: 30px auto;
         text-align: left;
         max-width: 900px;
@@ -64,13 +67,7 @@
 
 @media screen and (min-width: $tablet) {
     .home {
-        &__company {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        &__application {
+         &__application {
             min-height: 50vh;  
             display: flex;
             align-items: center;
