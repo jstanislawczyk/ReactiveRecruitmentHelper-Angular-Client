@@ -1,0 +1,53 @@
+@import '../../../style-variables.scss';
+
+.application-success {
+    margin-top: 80px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__info {
+        max-width: 350px;
+        align-self: center;
+        text-align: center;
+        font-weight: normal;
+    }
+
+    &__link {
+        display: block;
+        margin: 60px auto 50px auto;
+        padding: 20px 0;
+        width: 200px;
+        background-color: $dark-grey;
+        font-size: 1.1rem;
+        color: #fff;
+        text-align: center;
+        border-radius: 3px;
+        line-height: 1.1rem;
+
+        &:hover { 
+            color: $pear-green;
+        }
+    }
+}
+
+@media (min-width: $tablet) {
+    .application-success {
+        padding-top: 80px;
+
+        &__info {
+            max-width: 550px;
+        }
+    }    
+}
+
+@media (min-width: $desktop) {
+    .application-success {
+        padding-top: 100px;
+
+        &__info {
+            max-width: 750px;
+        }
+    }    
+}
