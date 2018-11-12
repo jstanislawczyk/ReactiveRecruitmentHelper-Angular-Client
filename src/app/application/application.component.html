@@ -4,66 +4,88 @@
   <form class="application__form" [formGroup]="applicationForm" (ngSubmit)="sendApplication()">
     <label class="application__input-label">
       <p class="application__input-title">First Name:</p>
-      <input class="application__input" type="text" formControlName="firstName" placeholder="John" />
-      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
-        <div *ngIf="applicationForm.controls.name.errors.required">
-          First name is required
+      <input [ngClass]="{'application__input-error': isSubmitted && applicationForm.controls.firstName.errors}" class="application__input" type="text" formControlName="firstName" placeholder="John" />
+      <div *ngIf="isSubmitted && applicationForm.controls.firstName.errors" class="application__input-info-error">
+        <div *ngIf="applicationForm.controls.firstName.errors.required">
+          First name is required 
+        </div>
+        <div *ngIf="applicationForm.controls.firstName.errors.minlength">
+          First name requires min 2 letters
+        </div>
+        <div *ngIf="applicationForm.controls.firstName.errors.maxlength">
+          First name requires max 60 letters
         </div>
       </div>
     </label>
 
     <label class="application__input-label">
       <p class="application__input-title">Last Name:</p>
-      <input class="application__input" type="text" formControlName="lastName" placeholder="Smith" />
-      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
-        <div *ngIf="applicationForm.controls.name.errors.required">
-          Last name is required
+      <input [ngClass]="{'application__input-error': isSubmitted && applicationForm.controls.lastName.errors}" class="application__input" type="text" formControlName="lastName" placeholder="Smith" />
+      <div *ngIf="isSubmitted && applicationForm.controls.lastName.errors" class="application__input-info-error">
+        <div *ngIf="applicationForm.controls.lastName.errors.required">
+          Last name is required 
+        </div>
+        <div *ngIf="applicationForm.controls.lastName.errors.minlength">
+          Last name requires min 2 letters
+        </div>
+        <div *ngIf="applicationForm.controls.lastName.errors.maxlength">
+          Last name requires max 80 letters
         </div>
       </div>
     </label>
 
     <label class="application__input-label">
       <p class="application__input-title">Job position:</p>
-      <input class="application__input" type="text" formControlName="jobPosition" placeholder="Junior Java" />
-      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
-        <div *ngIf="applicationForm.controls.name.errors.required">
-          Job position is required
+      <input [ngClass]="{'application__input-error': isSubmitted && applicationForm.controls.jobPosition.errors}" class="application__input" type="text" formControlName="jobPosition" placeholder="Junior Java" />
+      <div *ngIf="isSubmitted && applicationForm.controls.jobPosition.errors" class="application__input-info-error">
+        <div *ngIf="applicationForm.controls.jobPosition.errors.required">
+          Job position is required 
+        </div>
+        <div *ngIf="applicationForm.controls.jobPosition.errors.minlength">
+          Job position requires min 2 letters
+        </div>
+        <div *ngIf="applicationForm.controls.jobPosition.errors.maxlength">
+          Job position requires max 60 letters
         </div>
       </div>
     </label>
 
     <label class="application__input-label">
       <p class="application__input-title">Experience years:</p>
-      <input class="application__input" type="number" formControlName="experienceYears" placeholder="5"/>
-      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
-        <div *ngIf="applicationForm.controls.name.errors.required">
-          Experience years are required
+      <input [ngClass]="{'application__input-error': isSubmitted && applicationForm.controls.experienceYearsInJobPosition.errors}" class="application__input" type="number" formControlName="experienceYearsInJobPosition" placeholder="5"/>
+      <div *ngIf="isSubmitted && applicationForm.controls.experienceYearsInJobPosition.errors" class="application__input-info-error">
+        <div *ngIf="applicationForm.controls.experienceYearsInJobPosition.errors.required">
+          Experience is required 
+        </div>
+        <div *ngIf="applicationForm.controls.experienceYearsInJobPosition.errors.min">
+          Experience is at least 0 
         </div>
       </div>
     </label>
 
-    <label class="application__input-label">
+    <label class="application__input-label" formArrayName="technologies">
       <p class="application__input-title">Technology and knowledge level:</p>
 
-      <div *ngFor="let size of technologyInputGroupSize" class="application__input-group">
-        <input class="application__input application__input--medium" type="text" formControlName="technologyName" placeholder="Java" />
-        <input class="application__input application__input--small" type="number" formControlName="technologyKnowledgeLevel" placeholder="0-10" />
+      <div *ngFor="let technology of applicationForm.controls.technologies.controls; let i=index;" class="application__technology-group">
+        <div [formGroupName]="i">
+          <input [ngClass]="{'application__input-error': isSubmitted && applicationForm.controls.technologies['controls'][i].controls.name.errors}" class="application__input application__input--medium" type="text" formControlName="name" placeholder="Java (2-30 letters)" />
+          <input [ngClass]="{'application__input-error': isSubmitted && applicationForm.controls.technologies['controls'][i].controls.knowledgeLevel.errors}" class="application__input application__input--small" type="number" formControlName="knowledgeLevel" placeholder="0-10" />
+        </div> 
       </div>
-
-      <button (click)="expandTechnologyInputGroup()" [ngClass]="{'application__input-group-button--disabled': extendButtonDisabled}" class="application__input-group-button">+</button>
-      <button (click)="decreaseTechnologyInputGroup()" *ngIf="decreaseButtonEnabled" class="application__input-group-button application__input-group-button--decrease">-</button>
+      <button (click)="expandTechnologyInputGroup()" [ngClass]="{'application__input-group-button--disabled': extendButtonDisabled}" type="button" class="application__input-group-button">+</button>
+      <button (click)="decreaseTechnologyInputGroup()" *ngIf="decreaseButtonEnabled" type="button" class="application__input-group-button application__input-group-button--decrease">-</button>
     </label>
 
     <label class="application__input-label">
       <p class="application__input-title">Additional message:</p>
-      <textarea class="application__input application__input--textarea" formControlName="message" placeholder="Your message (0-200)"></textarea>
-      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
-        <div *ngIf="applicationForm.controls.name.errors.required">
-          Too many letters
+      <textarea [ngClass]="{'application__input-error': isSubmitted && applicationForm.controls.candidateMessage.errors}" class="application__input application__input--textarea" formControlName="candidateMessage" placeholder="Additional message (0-200 letters)"></textarea>
+      <div *ngIf="isSubmitted && applicationForm.controls.candidateMessage.errors" class="application__input-info-error">
+        <div *ngIf="applicationForm.controls.candidateMessage.errors.maxlength">
+          Job position requires max 200 letters
         </div>
       </div>
     </label>
 
-    <input type="submit" value="Send" class="application__submit">
+    <button class="application__submit">Send</button>
   </form>
 </section>  

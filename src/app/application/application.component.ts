@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { UserApplicationService } from '../services/application-service/user-application.service';
 
 @Component({
   selector: 'app-application',
@@ -8,52 +9,91 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ApplicationComponent implements OnInit {
 
-  applicationForm: FormGroup;
-  technologyInputGroupSize:Number[] = [1] 
-  maxInputGroupSize:Number = 4;
-  extendButtonDisabled: Boolean = false;
-  decreaseButtonEnabled: Boolean = false;
+  applicationForm:FormGroup;
+  maxInputGroupSize:Number = 15;
+  extendButtonDisabled:Boolean = false;
+  decreaseButtonEnabled:Boolean = false;
+  isApplicationFormValid:Boolean = false;
+  isSubmitted:Boolean = false;
 
-  constructor(private formBuilder: FormBuilder) { 
-    this.applicationForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      jobPosition: ['', Validators.required],
-      experienceYears: ['', Validators.required],
-      message: ['', Validators.required],
-      technologyName: ['', Validators.required],
-      technologyKnowledgeLevel: ['', Validators.required]
-    })
+  constructor(
+    private userApplication:UserApplicationService, 
+    private formBuilder:FormBuilder) { 
+    
   }
 
   ngOnInit() {
+    this.applicationForm = this.createApplicationForm();
   }
 
-  sendApplication() {
+  createApplicationForm() {
+    return  this.formBuilder.group({ 
+      firstName: [
+        '', [Validators.required, Validators.minLength(2), Validators.maxLength(60)]
+      ],
+      lastName: [
+        '', [Validators.required, Validators.minLength(2), Validators.maxLength(80)]
+      ],
+      jobPosition: [
+        '', [Validators.required, Validators.minLength(2), Validators.maxLength(60)]
+      ],
+      experienceYearsInJobPosition: [
+        '', [Validators.required, Validators.min(0)]
+      ],
+      technologies: this.formBuilder.array([
+        this.createTechnology()
+      ]),
+      candidateMessage: [
+        '', [Validators.maxLength(200)]  
+      ],
+    })
+  }
 
+  createTechnology() {
+    return this.formBuilder.group({ 
+      name: [
+        '', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]
+      ],
+      knowledgeLevel: [
+        '', [Validators.required, Validators.min(1), Validators.max(10)]
+      ]
+    })
   }
 
   expandTechnologyInputGroup() {
-    if(this.technologyInputGroupSize.length < this.maxInputGroupSize) {
-      this.technologyInputGroupSize.push(1);
+    let technologiesList = <FormArray>this.applicationForm.controls.technologies;
 
-      if(this.technologyInputGroupSize.length === 2) {
+    if(technologiesList.length < this.maxInputGroupSize) {
+      technologiesList.push(this.createTechnology());
+
+      if(technologiesList.length === 2) {
         this.decreaseButtonEnabled = true;
       }
 
-      if(this.technologyInputGroupSize.length === this.maxInputGroupSize) {
+      if(technologiesList.length === this.maxInputGroupSize) {
         this.extendButtonDisabled = true;
       }
     } 
   }
 
   decreaseTechnologyInputGroup() {
-    if(this.technologyInputGroupSize.length === 2) {
+    let technologiesList = <FormArray>this.applicationForm.controls.technologies;
+
+    if(technologiesList.length === 2) {
       this.decreaseButtonEnabled = false;
-    } else if(this.technologyInputGroupSize.length === this.maxInputGroupSize) {
+    } else if(technologiesList.length === this.maxInputGroupSize) {
       this.extendButtonDisabled = false;
     } 
 
-    this.technologyInputGroupSize.pop();   
+    technologiesList.removeAt(technologiesList.length - 1);   
+  }
+
+  sendApplication() {
+    this.isSubmitted = true;
+
+    if(this.applicationForm.valid) {    
+      const formAsJson = JSON.stringify(this.applicationForm.getRawValue());
+      this.userApplication.saveUserApplication(formAsJson);
+    }
   }
 }
