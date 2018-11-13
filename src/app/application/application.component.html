@@ -1,6 +1,5 @@
 <section class="application">
   <h2 class="application__title">Send your application</h2>
-
   <form class="application__form" [formGroup]="applicationForm" (ngSubmit)="sendApplication()">
     <label class="application__input-label">
       <p class="application__input-title">First Name:</p>
@@ -86,6 +85,8 @@
       </div>
     </label>
 
-    <button class="application__submit">Send</button>
+    <re-captcha (resolved)="captchaResolved()" siteKey="6LfIlnoUAAAAAIqJ55Iyt5A00mCLVfVoIkdPUgT7"></re-captcha>
+
+    <button [ngClass]="{'application__submit--disabled': isCaptchaNotResolved}" [disabled]="isCaptchaNotResolved" class="application__submit">Send</button>
   </form>
 </section>  

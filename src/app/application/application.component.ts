@@ -15,6 +15,7 @@ export class ApplicationComponent implements OnInit {
   decreaseButtonEnabled:Boolean = false;
   isApplicationFormValid:Boolean = false;
   isSubmitted:Boolean = false;
+  isCaptchaNotResolved:Boolean = true;
 
   constructor(
     private userApplication:UserApplicationService, 
@@ -24,6 +25,10 @@ export class ApplicationComponent implements OnInit {
 
   ngOnInit() {
     this.applicationForm = this.createApplicationForm();
+  }
+  
+  captchaResolved() {
+    this.isCaptchaNotResolved = false;
   }
 
   createApplicationForm() {

@@ -116,6 +116,7 @@
 
         &--textarea {
             height: 130px;
+            margin-bottom: 50px;
         }
 
         &--medium {
@@ -144,6 +145,15 @@
 
         &:hover { 
             color: $pear-green;
+        }
+
+        &--disabled { 
+            background-color: #666;
+            cursor: default;
+
+            &:hover { 
+                color: #fff;
+            }
         }
     }
 }
