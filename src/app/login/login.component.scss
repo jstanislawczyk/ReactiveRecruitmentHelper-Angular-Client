@@ -1,3 +1,74 @@
+@import '../../styles-variables.scss';
+@import '../../styles-mixins.scss';
+
 .login {
-    
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+
+    &__form {
+        width: 90%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        border: 1px solid #000;
+        border-radius: 2px;
+    }
+
+    &__input {
+        width: 80%;
+        height: 30px;
+        margin-top: 30px;
+        @include form-input();
+    }
+
+    &__button {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        @include grey-button(); 
+    }
+}
+
+@media (min-width: $tablet) {
+    .login {
+        &__form {
+            max-width: 400px;
+        }
+
+        &__input {
+            height: 40px;
+            margin-top: 40px;
+            font-size: 1rem;
+        }
+
+        &__button {
+            margin-top: 40px;
+            margin-bottom: 40px; 
+        }
+    }
+}
+
+@media (min-width: $desktop) {
+    .login {
+        &__form {
+            max-width: 500px;
+        }
+
+        &__input {
+            height: 50px;
+            margin-top: 50px;
+            font-size: 1.2rem;
+        }
+
+        &__button {
+            margin-top: 50px;
+            margin-bottom: 50px; 
+        }
+    }
 }
