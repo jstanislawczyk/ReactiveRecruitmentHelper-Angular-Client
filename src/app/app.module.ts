@@ -17,6 +17,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { NavigationDesktopComponent } from './navigation/navigation-desktop/navigation-desktop.component';
 import { NavigationMobileComponent } from './navigation/navigation-mobile/navigation-mobile.component';
 import { ApplicationSuccessComponent } from './application/application-success/application-success.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ApplicationSuccessComponent } from './application/application-success/a
     CookieBannerComponent,
     NavigationDesktopComponent,
     NavigationMobileComponent,
-    ApplicationSuccessComponent
+    ApplicationSuccessComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
