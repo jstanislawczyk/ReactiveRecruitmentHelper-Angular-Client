@@ -1,7 +1,7 @@
-@import '../../../style-variables.scss';
+@import '../../../styles-variables.scss';
+@import '../../../styles-mixins.scss';
 
 .application-success {
-    margin-top: 80px;
     padding-top: 50px;
     display: flex;
     flex-direction: column;
@@ -15,20 +15,8 @@
     }
 
     &__link {
-        display: block;
+        @include grey-button(); 
         margin: 60px auto 50px auto;
-        padding: 20px 0;
-        width: 200px;
-        background-color: $dark-grey;
-        font-size: 1.1rem;
-        color: #fff;
-        text-align: center;
-        border-radius: 3px;
-        line-height: 1.1rem;
-
-        &:hover { 
-            color: $pear-green;
-        }
     }
 }
 

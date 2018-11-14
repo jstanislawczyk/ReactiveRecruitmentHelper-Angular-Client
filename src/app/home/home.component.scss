@@ -1,8 +1,8 @@
-@import '../../style-variables.scss';
+@import '../../styles-variables.scss';
+@import '../../styles-mixins.scss';
 
 .home {
     width: 100%;
-    margin-top: 80px;
 
     &__company {
         display: flex;
@@ -48,20 +48,8 @@
     }
 
     &__link {
-        display: block;
+        @include grey-button(); 
         margin: 0 auto 30px auto;
-        padding: 20px 0;
-        width: 200px;
-        background-color: $dark-grey;
-        font-size: 1.1rem;
-        color: #fff;
-        text-align: center;
-        border-radius: 3px;
-        line-height: 1.1rem;
-
-        &:hover { 
-            color: $pear-green;
-        }
     }
 }
 
