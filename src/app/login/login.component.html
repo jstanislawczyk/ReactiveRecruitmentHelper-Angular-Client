@@ -1,7 +1,9 @@
 <section class="login">
-    <form class="login__form" (ngSubmit)="login()">
-        <input class="login__input" type="text" placeholder="Login"/>
-        <input class="login__input" type="password" placeholder="Password"/>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="login__form">
+        <input formControlName="login" class="login__input" type="text" placeholder="Login"/>
+        <input formControlName="password" class="login__input" type="password" placeholder="Password"/>
+
+        <p *ngIf="loginFailed" class="login__error">Login failed</p>
 
         <button class="login__button">Login</button>
     </form>
