@@ -106,9 +106,6 @@
 
     &__submit {
         margin: 30px auto;
-        border: none;
-        background: none;
-        cursor: pointer;
         @include grey-button(); 
 
         &:hover { 
