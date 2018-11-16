@@ -15,16 +15,11 @@ export class UserApplicationService {
     private router:Router    
   ) { }
 
-  saveUserApplication(json:String) {
-    const header = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      })
-    };
+  saveUserApplication(candidateApplicationJson:String) {
+    const header = this.createHeader();
 
     this.http
-      .post(this.jobApplicationUri, json, header)
+      .post(this.jobApplicationUri, candidateApplicationJson, header)
       .subscribe(
         result => {
           this.candidateFirstName = result['firstName'];
@@ -32,6 +27,15 @@ export class UserApplicationService {
         },
         err => console.log(`Error occured [/jobs -> POST]: ${JSON.stringify(err)}`)
       );
+  }
+
+  createHeader() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      })
+    };
   }
 
   getCandidateFirstName() {
