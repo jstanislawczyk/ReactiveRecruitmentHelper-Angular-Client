@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationService {
 
-  authenticated:boolean = false;
+  isUserAuthenticated:boolean = false;
   authenticationUri:string = 'http://localhost:8090/login';
 
   constructor(
@@ -21,12 +21,17 @@ export class AuthenticationService {
 
     this.http
       .post(this.authenticationUri, userDataJson, header)
-      .subscribe(
-        result => {
-          console.log(result)
-        },
-        err => console.log('Could not authenticate user')
-      );
+      .toPromise()
+        .then(result => {
+          this.isUserAuthenticated = <boolean> result;
+
+          if(this.isUserAuthenticated) {  
+            this.router.navigate(['']);
+          }
+        })
+        .catch(err => {
+          this.isUserAuthenticated = false;
+        })
   }
 
   createHeader() {

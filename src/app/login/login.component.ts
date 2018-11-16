@@ -10,7 +10,8 @@ import { AuthenticationService } from '../services/authentication-service/authen
 export class LoginComponent implements OnInit {
   
   loginForm:FormGroup;
-  loginFailed:boolean = false;
+  isUserAuthenticated:boolean = false;
+  isFormSubmitted:boolean = false;
 
   constructor(
     private formBuilder:FormBuilder,
@@ -22,15 +23,18 @@ export class LoginComponent implements OnInit {
 
   createApplicationForm() {
     return  this.formBuilder.group({ 
-      login: [''],
+      email: [''],
       password: ['']
     })
   }
 
   login() {
-    const login = this.loginForm.controls.login.value;
-    const password = this.loginForm.controls.password.value;  
+    const email = this.loginForm.controls.email.value;
+    const password = this.loginForm.controls.password.value;
 
-    this.authenticationService.authenticateUser(login, password);
+    this.authenticationService.authenticateUser(email, password);
+
+    this.isUserAuthenticated = this.authenticationService.isUserAuthenticated;  
+    this.isFormSubmitted = true;
   }
 }
