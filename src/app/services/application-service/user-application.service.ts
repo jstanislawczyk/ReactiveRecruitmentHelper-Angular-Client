@@ -15,10 +15,10 @@ export class UserApplicationService {
     private router:Router    
   ) { }
 
-  saveUserApplication(json: String) {
+  saveUserApplication(json:String) {
     const header = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
         'Accept': 'application/json'
       })
     };
