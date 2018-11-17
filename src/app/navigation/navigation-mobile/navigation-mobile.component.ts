@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navigation-mobile',
   templateUrl: './navigation-mobile.component.html',
   styleUrls: ['./navigation-mobile.component.scss']
 })
+
 export class NavigationMobileComponent implements OnInit {
 
-  mobileSidebarOpened:Boolean = false;
+  @Input() isUserAuthenticated:boolean;
+
+  mobileSidebarOpened:boolean = false;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   handleMobileSidebarVisibility() {
     this.mobileSidebarOpened = !this.mobileSidebarOpened;

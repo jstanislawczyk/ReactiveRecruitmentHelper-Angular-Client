@@ -9,9 +9,15 @@
       <li class="desktop-nav__list-element">
         <a routerLink="/application" class="desktop-nav__link">Application</a>
       </li>
-      <li class="desktop-nav__list-element">
-          <a routerLink="/login" class="desktop-nav__link">Login</a>
-        </li>
+      <li *ngIf="!isUserAuthenticated" class="desktop-nav__list-element">
+        <a routerLink="/login" class="desktop-nav__link">Login</a>
+      </li>
+      <li *ngIf="isUserAuthenticated" class="desktop-nav__list-element">
+        <a routerLink="/candidates" class="desktop-nav__link">Candidates</a>
+      </li>
+      <li *ngIf="isUserAuthenticated" class="desktop-nav__list-element">
+        <a routerLink="/account" class="desktop-nav__link">Account</a>
+      </li>
     </ul>
   </nav>
 </div>

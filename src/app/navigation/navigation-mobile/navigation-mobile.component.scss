@@ -45,7 +45,6 @@
         top: 0;
         background: $dark-grey;
         transition: transform .4s linear;
-        border-right: 2px solid #fff;
 
         &.mobile-nav__navigation-opened {  
             transform: translateX(320px);
