@@ -13,7 +13,9 @@ export class NavigationComponent implements OnInit {
 
   constructor(private authenticationService:AuthenticationService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  ngDoCheck() {
     this.isUserAuthenticated = this.authenticationService.isUserAuthenticated;
   }
 }
