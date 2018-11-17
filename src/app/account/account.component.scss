@@ -1,0 +1,102 @@
+@import '../../styles-variables.scss';
+@import '../../styles-mixins.scss';
+
+.account {
+    text-align: center;
+
+    &__title {
+        margin-top: 40px;
+        font-weight: 500;
+    }
+
+    &__data {
+        margin: 40px auto;
+        width: 90%;
+        max-width: 550px;
+    }
+
+    &__field {
+        width: 100%;
+        min-height: 30px;
+        margin-bottom: 30px;
+        display: flex;
+        font-size: 1rem;
+    }
+
+    &__field-key {
+        width: 40%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $dark-grey;
+        color: #fff;
+    }
+
+    &__field-value {
+        width: 60%;
+        display: flex;
+        border-bottom: 2px solid $dark-grey;
+        border-left: 2px solid $dark-grey;
+        align-items: center;
+        justify-content: center;
+        word-break: break-all;
+
+        &:last-child {
+            display: block;
+        }
+    }
+    
+    &__field-value-text {
+        margin: 10px 0 10px 10px;
+    }
+}
+
+@media (min-width: $tablet) {
+    .account {
+        &__data {
+            max-width: 650px; 
+            margin: 60px auto; 
+        }
+
+        &__field {
+            margin-bottom: 40px;
+            font-size: 1.3rem;
+        }
+
+        &__field-key {
+            height: 46px;
+        }
+
+        &__title {
+            font-size: 2rem;
+        }
+    }
+}
+
+@media (min-width: $desktop) {
+    .account {
+        &__data {
+            max-width: 900px;
+            margin-top: 80px; 
+        }
+
+        &__field {
+            margin-bottom: 60px;
+            font-size: 1.4rem;
+        }
+
+        &__field-key {
+            width: 30%;
+            height: 48px;
+        }
+        
+        &__field-value {
+            width: 70%;
+        }
+    
+        &__title {
+            font-size: 2.5rem;
+        }
+    }
+}
