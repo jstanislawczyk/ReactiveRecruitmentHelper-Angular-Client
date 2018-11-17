@@ -18,6 +18,8 @@ import { NavigationDesktopComponent } from './navigation/navigation-desktop/navi
 import { NavigationMobileComponent } from './navigation/navigation-mobile/navigation-mobile.component';
 import { ApplicationSuccessComponent } from './application/application-success/application-success.component';
 import { LoginComponent } from './login/login.component';
+import { CandidatesComponent } from './candidates/candidates.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { LoginComponent } from './login/login.component';
     NavigationDesktopComponent,
     NavigationMobileComponent,
     ApplicationSuccessComponent,
-    LoginComponent
+    LoginComponent,
+    CandidatesComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
