@@ -1,0 +1,41 @@
+@import '../../styles-variables.scss';
+@import '../../styles-mixins.scss';
+
+.logout {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__info {
+        max-width: 350px;
+        align-self: center;
+        text-align: center;
+        font-weight: normal;
+    }
+
+    &__link {
+        @include grey-button(); 
+        margin: 60px auto 50px auto;
+    }
+}
+
+@media (min-width: $tablet) {
+    .logout {
+        padding-top: 80px;
+
+        &__info {
+            max-width: 550px;
+        }
+    }    
+}
+
+@media (min-width: $desktop) {
+    .logout {
+        padding-top: 100px;
+
+        &__info {
+            max-width: 750px;
+        }
+    }    
+}
