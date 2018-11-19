@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,30 +12,24 @@ export class AuthenticationService {
   authenticationUri:string = 'http://localhost:8090/login';
 
   constructor(
-    private http:HttpClient,
-    private router:Router    
+    private http:HttpClient  
   ) { }
 
   authenticateUser(email:string, password:string) {
     const header = this.createHeader();
     const userDataJson = this.createUserDataJson(email, password); 
 
-    this.http
+    return this.http
       .post(this.authenticationUri, userDataJson, header)
-      .toPromise()
-        .then(result => {
+      .pipe(
+        map(result => {
           this.isUserAuthenticated = <boolean> result;
-
-          if(this.isUserAuthenticated) {  
-            this.router.navigate(['']);
-          }
+          localStorage.setItem('isUserAuthenticated', `${this.isUserAuthenticated}`);
         })
-        .catch(err => {
-          this.isUserAuthenticated = false;
-        })
+      )
   }
 
-  createHeader() {
+  createHeader():Object {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -42,7 +37,16 @@ export class AuthenticationService {
     };
   }
 
-  createUserDataJson(email, password) {
+  createUserDataJson(email, password):JSON {
     return JSON.parse(`{"email": "${email}", "password": "${password}"}`);
+  }
+
+  loadUserAuthenticationStatus():void {
+    this.isUserAuthenticated = JSON.parse(localStorage.getItem('isUserAuthenticated'));
+  }
+
+  logoutUser():void {
+    this.isUserAuthenticated = false;
+    localStorage.removeItem('isUserAuthenticated');
   }
 }
