@@ -11,9 +11,9 @@ export class AuthenticationService {
   isUserAuthenticated:boolean = false;
   authenticationUri:string = 'http://localhost:8090/login';
 
-  constructor(
-    private http:HttpClient  
-  ) { }
+  constructor(private http:HttpClient) { 
+    this.loadUserAuthenticationStatus();
+  }
 
   authenticateUser(email:string, password:string) {
     const header = this.createHeader();
