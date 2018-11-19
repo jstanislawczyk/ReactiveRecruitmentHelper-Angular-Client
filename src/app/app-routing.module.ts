@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ApplicationComponent } from './application/application.component';
 import { ApplicationSuccessComponent } from './application/application-success/application-success.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 import { CandidatesComponent } from './candidates/candidates.component';
 import { AccountComponent } from './account/account.component';
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'application', component: ApplicationComponent },
   { path: 'application/success', component: ApplicationSuccessComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: 'candidates', component: CandidatesComponent },
   { path: 'account', component: AccountComponent }
 ];

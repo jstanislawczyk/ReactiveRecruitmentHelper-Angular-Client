@@ -20,6 +20,7 @@ import { ApplicationSuccessComponent } from './application/application-success/a
 import { LoginComponent } from './login/login.component';
 import { CandidatesComponent } from './candidates/candidates.component';
 import { AccountComponent } from './account/account.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AccountComponent } from './account/account.component';
     ApplicationSuccessComponent,
     LoginComponent,
     CandidatesComponent,
-    AccountComponent
+    AccountComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
