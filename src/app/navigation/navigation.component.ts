@@ -16,9 +16,7 @@ export class NavigationComponent implements OnInit {
     private authenticationService:AuthenticationService,
     private router:Router) { }
 
-  ngOnInit() { 
-    this.authenticationService.loadUserAuthenticationStatus();
-  }
+  ngOnInit() { }
 
   ngDoCheck() {
     this.isUserAuthenticated = this.authenticationService.isUserAuthenticated;

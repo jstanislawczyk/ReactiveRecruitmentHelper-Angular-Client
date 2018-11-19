@@ -15,7 +15,7 @@ export class UserApplicationService {
     private router:Router    
   ) { }
 
-  saveUserApplication(candidateApplicationJson:String) {
+  saveUserApplication(candidateApplicationJson:String):void {
     const header = this.createHeader();
 
     this.http
@@ -29,7 +29,7 @@ export class UserApplicationService {
       );
   }
 
-  createHeader() {
+  createHeader():Object {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export class UserApplicationService {
     };
   }
 
-  getCandidateFirstName() {
+  getCandidateFirstName():string {
     return this.candidateFirstName;
   }
 }

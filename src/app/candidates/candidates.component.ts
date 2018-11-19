@@ -9,7 +9,5 @@ export class CandidatesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }

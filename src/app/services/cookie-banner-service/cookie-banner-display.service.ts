@@ -14,11 +14,11 @@ export class CookieBannerDisplayService {
 
   constructor() { }
 
-  changeCookieBannerDisplayState(state: Boolean) {
+  changeCookieBannerDisplayState(state: Boolean):void {
     this.cookieBannerDisplayState.next(state);
   }
 
-  changeCookieBannerHeightState(state: Number) {
+  changeCookieBannerHeightState(state: Number):void {
     this.cookieBannerHeight.next(state);
   }
 }

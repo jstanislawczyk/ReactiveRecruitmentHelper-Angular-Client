@@ -12,7 +12,7 @@ export class CookieBannerComponent implements OnInit {
 
   @ViewChild('cookieBanner') cookieBanner;
 
-  cookieBannerDisplay:Boolean = true;
+  cookieBannerDisplay:boolean = true;
 
   constructor(
     private cookieService:CookieService, 
@@ -27,28 +27,28 @@ export class CookieBannerComponent implements OnInit {
     this.checkCookieBannerHeight();
   }
   
-  checkCookieBannerDisplay() {
+  checkCookieBannerDisplay():void {
     if(this.cookieBannerShouldBeHidden()) {
       this.hideCookieBanner();
     }
   }
 
-  checkCookieBannerHeight() {
+  checkCookieBannerHeight():void {
     setTimeout(() => {
       this.cookieBannerDisplayService.changeCookieBannerHeightState(this.cookieBanner.nativeElement.offsetHeight);
     })
   }
 
-  cookieBannerShouldBeHidden() {
+  cookieBannerShouldBeHidden():boolean {
     return this.cookieService.get('cookie-banner-display') === 'false';
   }
 
-  closeCookieBanner() {
+  closeCookieBanner():void {
     this.cookieService.set('cookie-banner-display', 'false', 30);
     this.hideCookieBanner();
   } 
 
-  hideCookieBanner() {
+  hideCookieBanner():void {
     this.cookieBannerDisplay = false;
     this.cookieBannerDisplayService.changeCookieBannerDisplayState(false);
   }

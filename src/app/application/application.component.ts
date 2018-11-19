@@ -27,11 +27,11 @@ export class ApplicationComponent implements OnInit {
     this.applicationForm = this.createApplicationForm();
   }
   
-  captchaResolved() {
+  captchaResolved():void {
     this.isCaptchaNotResolved = false;
   }
 
-  createApplicationForm() {
+  createApplicationForm():FormGroup {
     return  this.formBuilder.group({ 
       firstName: [
         '', [Validators.required, Validators.minLength(2), Validators.maxLength(60)]
@@ -54,7 +54,7 @@ export class ApplicationComponent implements OnInit {
     })
   }
 
-  createTechnology() {
+  createTechnology():FormGroup {
     return this.formBuilder.group({ 
       name: [
         '', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]
@@ -65,7 +65,7 @@ export class ApplicationComponent implements OnInit {
     })
   }
 
-  expandTechnologyInputGroup() {
+  expandTechnologyInputGroup():void {
     let technologiesList = <FormArray>this.applicationForm.controls.technologies;
 
     if(technologiesList.length < this.maxInputGroupSize) {
@@ -81,7 +81,7 @@ export class ApplicationComponent implements OnInit {
     } 
   }
 
-  decreaseTechnologyInputGroup() {
+  decreaseTechnologyInputGroup():void {
     let technologiesList = <FormArray>this.applicationForm.controls.technologies;
 
     if(technologiesList.length === 2) {
@@ -93,7 +93,7 @@ export class ApplicationComponent implements OnInit {
     technologiesList.removeAt(technologiesList.length - 1);   
   }
 
-  sendApplication() {
+  sendApplication():void {
     this.isSubmitted = true;
 
     if(this.applicationForm.valid) {    
