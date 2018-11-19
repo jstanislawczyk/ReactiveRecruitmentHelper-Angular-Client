@@ -18,6 +18,9 @@
       <li *ngIf="isUserAuthenticated" class="desktop-nav__list-element">
         <a routerLink="/account" class="desktop-nav__link">Account</a>
       </li>
+      <li *ngIf="isUserAuthenticated" (click)="logout()" class="desktop-nav__list-element">
+        <a class="desktop-nav__link">Logout</a>
+      </li>
     </ul>
   </nav>
 </div>

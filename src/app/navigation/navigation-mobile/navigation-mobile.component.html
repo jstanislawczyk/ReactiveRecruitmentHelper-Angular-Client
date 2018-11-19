@@ -29,6 +29,9 @@
         <li class="mobile-nav__list-element">
           <a *ngIf="isUserAuthenticated" (click)="handleMobileSidebarVisibility()" routerLink="/account" class="mobile-nav__link">Account</a>
         </li>
+        <li class="mobile-nav__list-element">
+          <a *ngIf="isUserAuthenticated" (click)="logout()" class="mobile-nav__link">Logout</a>
+        </li>
       </ul>
     </nav>
   </div>

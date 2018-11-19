@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navigation-desktop',
@@ -9,8 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NavigationDesktopComponent implements OnInit {
 
   @Input() isUserAuthenticated:boolean;
+  @Output() onLogout: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() { }
+
+  logout():void {
+    this.onLogout.emit();
+  }
 }
