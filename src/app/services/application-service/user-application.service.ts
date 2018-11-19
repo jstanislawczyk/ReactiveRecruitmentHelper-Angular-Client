@@ -1,35 +1,22 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserApplicationService {
 
-  private jobApplicationUri:string = 'http://localhost:8090/jobs';
-  candidateFirstName:string ='';
-
   constructor(
-    private http:HttpClient,
-    private router:Router    
-  ) { }
-
-  saveUserApplication(candidateApplicationJson:String):void {
-    const header = this.createHeader();
-
-    this.http
-      .post(this.jobApplicationUri, candidateApplicationJson, header)
-      .subscribe(
-        result => {
-          this.candidateFirstName = result['firstName'];
-          this.router.navigate(['application/success'])
-        },
-        err => console.log(`Error occured [/jobs -> POST]: ${JSON.stringify(err)}`)
-      );
+    private http: HttpClient,
+    private router: Router
+  ) {
   }
 
-  createHeader():Object {
+  private jobApplicationUri = 'http://localhost:8090/jobs';
+  candidateFirstName = '';
+
+  static createHeader(): Object {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -38,7 +25,21 @@ export class UserApplicationService {
     };
   }
 
-  getCandidateFirstName():string {
+  saveUserApplication(candidateApplicationJson: String): void {
+    const header = UserApplicationService.createHeader();
+
+    this.http
+      .post(this.jobApplicationUri, candidateApplicationJson, header)
+      .subscribe(
+        result => {
+          this.candidateFirstName = result['firstName'];
+          this.router.navigate(['application/success']);
+        },
+        err => console.log(`Error occured [/jobs -> POST]: ${JSON.stringify(err)}`)
+      );
+  }
+
+  getCandidateFirstName(): string {
     return this.candidateFirstName;
   }
 }

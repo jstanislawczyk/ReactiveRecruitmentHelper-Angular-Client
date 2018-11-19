@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-navigation-mobile',
@@ -8,21 +8,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export class NavigationMobileComponent implements OnInit {
 
-  @Input() isUserAuthenticated:boolean;
+  @Input() isUserAuthenticated: boolean;
   @Output() onLogout: EventEmitter<any> = new EventEmitter<any>();
 
-  mobileSidebarOpened:boolean = false;
+  mobileSidebarOpened = false;
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
-  logout():void {
+  logout(): void {
     this.handleMobileSidebarVisibility();
     this.onLogout.emit();
   }
-  
-  handleMobileSidebarVisibility():void {
+
+  handleMobileSidebarVisibility(): void {
     this.mobileSidebarOpened = !this.mobileSidebarOpened;
   }
 }

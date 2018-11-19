@@ -8,7 +8,7 @@ import { UserApplicationService } from '../../services/application-service/user-
 })
 export class ApplicationSuccessComponent implements OnInit {
 
-  candidateFirstName:string;
+  candidateFirstName: string;
 
   constructor(private userApplicationService: UserApplicationService) { }
 

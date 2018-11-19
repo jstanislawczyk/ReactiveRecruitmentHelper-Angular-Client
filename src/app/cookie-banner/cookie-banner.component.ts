@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
-import { CookieBannerDisplayService } from '../services/cookie-banner-service/cookie-banner-display.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {CookieService} from 'ngx-cookie-service';
+import {CookieBannerDisplayService} from '../services/cookie-banner-service/cookie-banner-display.service';
 
 
 @Component({
@@ -12,12 +12,13 @@ export class CookieBannerComponent implements OnInit {
 
   @ViewChild('cookieBanner') cookieBanner;
 
-  cookieBannerDisplay:boolean = true;
+  cookieBannerDisplay = true;
 
   constructor(
-    private cookieService:CookieService, 
-    private cookieBannerDisplayService:CookieBannerDisplayService
-  ) { }
+    private cookieService: CookieService,
+    private cookieBannerDisplayService: CookieBannerDisplayService
+  ) {
+  }
 
   ngOnInit() {
     this.checkCookieBannerDisplay();
@@ -26,29 +27,29 @@ export class CookieBannerComponent implements OnInit {
   ngDoCheck() {
     this.checkCookieBannerHeight();
   }
-  
-  checkCookieBannerDisplay():void {
-    if(this.cookieBannerShouldBeHidden()) {
+
+  checkCookieBannerDisplay(): void {
+    if (this.cookieBannerShouldBeHidden()) {
       this.hideCookieBanner();
     }
   }
 
-  checkCookieBannerHeight():void {
+  checkCookieBannerHeight(): void {
     setTimeout(() => {
       this.cookieBannerDisplayService.changeCookieBannerHeightState(this.cookieBanner.nativeElement.offsetHeight);
-    })
+    });
   }
 
-  cookieBannerShouldBeHidden():boolean {
+  cookieBannerShouldBeHidden(): boolean {
     return this.cookieService.get('cookie-banner-display') === 'false';
   }
 
-  closeCookieBanner():void {
+  closeCookieBanner(): void {
     this.cookieService.set('cookie-banner-display', 'false', 30);
     this.hideCookieBanner();
-  } 
+  }
 
-  hideCookieBanner():void {
+  hideCookieBanner(): void {
     this.cookieBannerDisplay = false;
     this.cookieBannerDisplayService.changeCookieBannerDisplayState(false);
   }

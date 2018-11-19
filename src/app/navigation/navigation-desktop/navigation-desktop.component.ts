@@ -8,14 +8,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export class NavigationDesktopComponent implements OnInit {
 
-  @Input() isUserAuthenticated:boolean;
+  @Input() isUserAuthenticated: boolean;
   @Output() onLogout: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() { }
 
-  logout():void {
+  logout(): void {
     this.onLogout.emit();
   }
 }

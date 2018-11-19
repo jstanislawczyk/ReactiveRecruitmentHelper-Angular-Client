@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +12,14 @@ export class CookieBannerDisplayService {
   private cookieBannerHeight = new BehaviorSubject<Number>(0);
   currentCookieBannerHeight = this.cookieBannerHeight.asObservable();
 
-  constructor() { }
+  constructor() {
+  }
 
-  changeCookieBannerDisplayState(state: Boolean):void {
+  changeCookieBannerDisplayState(state: Boolean): void {
     this.cookieBannerDisplayState.next(state);
   }
 
-  changeCookieBannerHeightState(state: Number):void {
+  changeCookieBannerHeightState(state: Number): void {
     this.cookieBannerHeight.next(state);
   }
 }

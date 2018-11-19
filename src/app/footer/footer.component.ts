@@ -8,8 +8,8 @@ import { CookieBannerDisplayService } from '../services/cookie-banner-service/co
 })
 export class FooterComponent implements OnInit {
 
-  cookieBannerDisplay:Boolean;
-  cookieBannerHeight:Number;
+  cookieBannerDisplay: Boolean;
+  cookieBannerHeight: Number;
 
   constructor(private cookieBannerDisplayService: CookieBannerDisplayService) { }
 

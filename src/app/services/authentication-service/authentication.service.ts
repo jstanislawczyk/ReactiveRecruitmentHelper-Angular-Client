@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -8,28 +8,14 @@ import { map } from 'rxjs/operators';
 })
 export class AuthenticationService {
 
-  isUserAuthenticated:boolean = false;
-  authenticationUri:string = 'http://localhost:8090/login';
-
-  constructor(private http:HttpClient) { 
+  constructor(private http: HttpClient) {
     this.loadUserAuthenticationStatus();
   }
 
-  authenticateUser(email:string, password:string) {
-    const header = this.createHeader();
-    const userDataJson = this.createUserDataJson(email, password); 
+  isUserAuthenticated = false;
+  authenticationUri = 'http://localhost:8090/login';
 
-    return this.http
-      .post(this.authenticationUri, userDataJson, header)
-      .pipe(
-        map(result => {
-          this.isUserAuthenticated = <boolean> result;
-          localStorage.setItem('isUserAuthenticated', `${this.isUserAuthenticated}`);
-        })
-      )
-  }
-
-  createHeader():Object {
+  static createHeader(): Object {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -37,15 +23,29 @@ export class AuthenticationService {
     };
   }
 
-  createUserDataJson(email, password):JSON {
+  static createUserDataJson(email, password): JSON {
     return JSON.parse(`{"email": "${email}", "password": "${password}"}`);
   }
 
-  loadUserAuthenticationStatus():void {
+  authenticateUser(email: string, password: string) {
+    const header = AuthenticationService.createHeader();
+    const userDataJson = AuthenticationService.createUserDataJson(email, password);
+
+    return this.http
+      .post(this.authenticationUri, userDataJson, header)
+      .pipe(
+        map(result => {
+          this.isUserAuthenticated = <boolean>result;
+          localStorage.setItem('isUserAuthenticated', `${this.isUserAuthenticated}`);
+        })
+      );
+  }
+
+  loadUserAuthenticationStatus(): void {
     this.isUserAuthenticated = JSON.parse(localStorage.getItem('isUserAuthenticated'));
   }
 
-  logoutUser():void {
+  logoutUser(): void {
     this.isUserAuthenticated = false;
     localStorage.removeItem('isUserAuthenticated');
   }
