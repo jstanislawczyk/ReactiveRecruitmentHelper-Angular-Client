@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication-service/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,26 +16,38 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder:FormBuilder,
-    private authenticationService:AuthenticationService) { }
+    private authenticationService:AuthenticationService,
+    private router:Router) { }
 
   ngOnInit() { 
     this.loginForm = this.createApplicationForm();
   }
 
-  createApplicationForm() {
-    return  this.formBuilder.group({ 
+  createApplicationForm():FormGroup {
+    return this.formBuilder.group({ 
       email: [''],
       password: ['']
     })
   }
 
-  login() {
+  login():void {
     const email = this.loginForm.controls.email.value;
     const password = this.loginForm.controls.password.value;
 
-    this.authenticationService.authenticateUser(email, password);
+    this.authenticationService.authenticateUser(email, password)
+      .subscribe(() => {
+        this.isUserAuthenticated = this.authenticationService.isUserAuthenticated;
 
-    this.isUserAuthenticated = this.authenticationService.isUserAuthenticated;  
-    this.isFormSubmitted = true;
+        if(this.isUserAuthenticated) {  
+          this.router.navigate(['']);
+        }  
+       
+        this.isFormSubmitted = true;
+      },
+      () => {
+        this.isUserAuthenticated = false;  
+        this.isFormSubmitted = true;
+        localStorage.setItem('userAuthenticated', `${this.isUserAuthenticated}`);
+      });
   }
 }
