@@ -3,7 +3,7 @@ class Role {
     return this._authority;
   }
 
-  private _authority: string;
+  private readonly _authority: string;
 }
 
 export {Role};

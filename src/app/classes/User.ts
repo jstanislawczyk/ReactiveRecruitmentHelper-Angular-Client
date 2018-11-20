@@ -15,7 +15,7 @@ class User {
       return this._roles;
     }
 
-    private _id: string;
+    private readonly _id: string;
     private readonly _firstName: string;
     private readonly _lastName: string;
     private readonly _email: string;
