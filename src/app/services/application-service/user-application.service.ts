@@ -34,8 +34,7 @@ export class UserApplicationService {
         result => {
           this.candidateFirstName = result['firstName'];
           this.router.navigate(['application/success']);
-        },
-        err => console.log(`Error occured [/jobs -> POST]: ${JSON.stringify(err)}`)
+        }
       );
   }
 
