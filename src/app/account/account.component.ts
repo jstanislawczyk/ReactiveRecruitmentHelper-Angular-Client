@@ -13,7 +13,7 @@ export class AccountComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.user = this.authenticationService.userData;
   }
 }

@@ -33,12 +33,8 @@
           Roles
         </div>
         <div class="account__field-value">
-          <p class="account__field-value-text">
-            Admin
-          </p>
-
-          <p class="account__field-value-text">
-            Recruiter
+          <p *ngFor="let role of user.roles" class="account__field-value-text">
+            {{role.authority}}
           </p>
         </div>
       </div>
