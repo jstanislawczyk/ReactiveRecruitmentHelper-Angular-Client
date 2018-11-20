@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.isUserAuthenticated = this.authenticationService.isUserAuthenticated;
 
         if (this.isUserAuthenticated) {
-          this.router.navigate(['']);
+          this.router.navigate(['']).then();
         }
 
         this.isFormSubmitted = true;

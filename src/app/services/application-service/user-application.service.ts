@@ -33,7 +33,7 @@ export class UserApplicationService {
       .subscribe(
         result => {
           this.candidateFirstName = result['firstName'];
-          this.router.navigate(['application/success']);
+          this.router.navigate(['application/success']).then();
         }
       );
   }
