@@ -1,4 +1,4 @@
 <header>
-  <app-navigation-mobile [isUserAuthenticated]="isUserAuthenticated" (onLogout)="logout()"></app-navigation-mobile>
-  <app-navigation-desktop [isUserAuthenticated]="isUserAuthenticated" (onLogout)="logout()"></app-navigation-desktop>
+  <app-navigation-mobile [isUserAuthenticated]="isUserAuthenticated" [isAdmin]="isAdmin" [isRecruiter]="isRecruiter" (onLogout)="logout()"></app-navigation-mobile>
+  <app-navigation-desktop [isUserAuthenticated]="isUserAuthenticated" [isAdmin]="isAdmin" [isRecruiter]="isRecruiter" (onLogout)="logout()"></app-navigation-desktop>
 </header>

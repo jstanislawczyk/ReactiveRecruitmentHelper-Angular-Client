@@ -9,6 +9,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class NavigationDesktopComponent implements OnInit {
 
   @Input() isUserAuthenticated: boolean;
+  @Input() isAdmin: boolean;
+  @Input() isRecruiter: boolean;
+
   @Output() onLogout: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }

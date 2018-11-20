@@ -12,7 +12,7 @@
       <li *ngIf="!isUserAuthenticated" class="desktop-nav__list-element">
         <a routerLink="/login" class="desktop-nav__link">Login</a>
       </li>
-      <li *ngIf="isUserAuthenticated" class="desktop-nav__list-element">
+      <li *ngIf="isUserAuthenticated && isRecruiter" class="desktop-nav__list-element">
         <a routerLink="/candidates" class="desktop-nav__link">Candidates</a>
       </li>
       <li *ngIf="isUserAuthenticated" class="desktop-nav__list-element">

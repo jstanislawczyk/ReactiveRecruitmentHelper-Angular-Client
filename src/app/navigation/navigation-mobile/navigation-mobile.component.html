@@ -24,7 +24,7 @@
           <a *ngIf="!isUserAuthenticated" (click)="handleMobileSidebarVisibility()" routerLink="/login" class="mobile-nav__link">Login</a>
         </li>
         <li class="mobile-nav__list-element">
-          <a *ngIf="isUserAuthenticated" (click)="handleMobileSidebarVisibility()" routerLink="/candidates" class="mobile-nav__link">Candidates</a>
+          <a *ngIf="isUserAuthenticated && isRecruiter" (click)="handleMobileSidebarVisibility()" routerLink="/candidates" class="mobile-nav__link">Candidates</a>
         </li>
         <li class="mobile-nav__list-element">
           <a *ngIf="isUserAuthenticated" (click)="handleMobileSidebarVisibility()" routerLink="/account" class="mobile-nav__link">Account</a>
