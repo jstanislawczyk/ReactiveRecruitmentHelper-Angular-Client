@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {AuthenticationService} from '../services/authentication-service/authentication.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthenticationService } from '../services/authentication-service/authentication.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -37,18 +37,18 @@ export class LoginComponent implements OnInit {
 
     this.authenticationService.authenticateUser(email, password)
       .subscribe(() => {
-          this.isUserAuthenticated = this.authenticationService.isUserAuthenticated;
+        this.isUserAuthenticated = this.authenticationService.isUserAuthenticated;
 
-          if (this.isUserAuthenticated) {
-            this.router.navigate(['']);
-          }
+        if (this.isUserAuthenticated) {
+          this.router.navigate(['']);
+        }
 
-          this.isFormSubmitted = true;
-        },
-        () => {
-          this.isUserAuthenticated = false;
-          this.isFormSubmitted = true;
-          localStorage.setItem('userAuthenticated', `${this.isUserAuthenticated}`);
-        });
+        this.isFormSubmitted = true;
+      },
+      () => {
+        this.isUserAuthenticated = false;
+        this.isFormSubmitted = true;
+        localStorage.setItem('userAuthenticated', `${this.isUserAuthenticated}`);
+      });
   }
 }
