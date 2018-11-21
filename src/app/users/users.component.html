@@ -1,0 +1,38 @@
+<section class="users">
+  <h2 class="users__title">Send your application</h2>
+  <form class="users__form">
+    <label class="users__input-label">
+      <p class="users__input-title">Email:</p>
+      <input class="users__input" type="email" placeholder="JohnSmith@mail.com" />
+    </label>
+
+    <label class="users__input-label">
+      <p class="users__input-title">Password:</p>
+      <input class="users__input" type="password" placeholder="Password" />
+    </label>
+
+    <label class="users__input-label">
+      <p class="users__input-title">First Name:</p>
+      <input class="users__input" type="text" placeholder="John" />
+    </label>
+
+    <label class="users__input-label">
+      <p class="users__input-title">Last Name:</p>
+      <input class="users__input" type="text" placeholder="Smith" />
+    </label>
+
+    <label class="users__input-label">
+      <p class="users__input-title">Roles:</p>
+      <p>
+        Admin <input class="users__input--checkbox" type="checkbox" name="authority" value="ADMIN" />
+      </p>
+      <p>
+        Recruiter <input class="users__input--checkbox" type="checkbox" name="authority" value="RECRUITER" />
+      </p>
+    </label>
+
+    <re-captcha (resolved)="captchaResolved()" siteKey="6LfIlnoUAAAAAIqJ55Iyt5A00mCLVfVoIkdPUgT7"></re-captcha>
+
+    <button [ngClass]="{'users__submit--disabled': isCaptchaNotResolved}" [disabled]="isCaptchaNotResolved" class="users__submit">Create user</button>
+  </form>
+</section>
