@@ -53,4 +53,18 @@ export class AuthenticationService {
   isUserAuthenticated(): boolean {
     return (this.userData != null);
   }
+
+  userHasExpectedRole(expectedRole: string): boolean {
+    let hasExpectedRole = false;
+
+    if(this.userData != null) {
+      this.userData.roles.forEach(role => {
+        if(role.authority === expectedRole) {
+          hasExpectedRole = true;
+        }
+      })
+    }
+
+    return hasExpectedRole;
+  }
 }

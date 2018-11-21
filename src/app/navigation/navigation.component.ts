@@ -13,7 +13,6 @@ export class NavigationComponent implements OnInit {
   isUserAuthenticated: boolean;
   isRecruiter = false;
   isAdmin = false;
-  user: User;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -24,27 +23,27 @@ export class NavigationComponent implements OnInit {
 
   ngDoCheck() {
     this.isUserAuthenticated = this.authenticationService.isUserAuthenticated();
-    this.user = this.authenticationService.userData;
-
     this.checkUserRoles();
   }
 
   logout(): void {
+    this.setUserRolesToDefault();
     this.authenticationService.logoutUser();
     this.router.navigate(['logout']).then();
   }
 
   private checkUserRoles() {
-    if (this.user !== null) {
-      this.user.roles.forEach(role => {
-        if (role.authority === 'ADMIN') {
-          this.isAdmin = true;
-        }
-
-        if (role.authority === 'RECRUITER') {
-          this.isRecruiter = true;
-        }
-      });
+    if(this.authenticationService.userHasExpectedRole('RECRUITER')) {
+      this.isRecruiter = true;
     }
+
+    if(this.authenticationService.userHasExpectedRole('ADMIN')) {
+      this.isAdmin = true;
+    }
+  }
+
+  private setUserRolesToDefault() {
+    this.isAdmin = false;
+    this.isRecruiter = false;
   }
 }
