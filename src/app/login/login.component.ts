@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
     this.authenticationService.authenticateUser(email, password)
       .subscribe(() => {
-        this.isUserAuthenticated = this.authenticationService.isUserAuthenticated;
+        this.isUserAuthenticated = this.authenticationService.isUserAuthenticated();
 
         if (this.isUserAuthenticated) {
           this.router.navigate(['']).then();

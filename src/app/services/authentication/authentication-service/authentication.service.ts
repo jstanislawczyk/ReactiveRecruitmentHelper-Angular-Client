@@ -12,7 +12,6 @@ export class AuthenticationService {
     this.loadUserAuthenticationStatus();
   }
 
-  isUserAuthenticated = false;
   authenticationUri = 'http://localhost:8090/login';
   userData: User;
 
@@ -37,22 +36,21 @@ export class AuthenticationService {
       .pipe(
         map(result => {
           this.userData = <User> result;
-          this.isUserAuthenticated = true;
-          localStorage.setItem('isUserAuthenticated', `${this.isUserAuthenticated}`);
           localStorage.setItem('userData', JSON.stringify(this.userData));
         })
       );
   }
 
   loadUserAuthenticationStatus(): void {
-    this.isUserAuthenticated = JSON.parse(localStorage.getItem('isUserAuthenticated'));
     this.userData = JSON.parse(localStorage.getItem('userData'));
   }
 
   logoutUser(): void {
-    this.isUserAuthenticated = false;
     this.userData = null;
-    localStorage.removeItem('isUserAuthenticated');
     localStorage.removeItem('userData');
+  }
+
+  isUserAuthenticated(): boolean {
+    return (this.userData != null);
   }
 }

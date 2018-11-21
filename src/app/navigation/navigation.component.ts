@@ -20,11 +20,10 @@ export class NavigationComponent implements OnInit {
     private router: Router) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   ngDoCheck() {
-    this.isUserAuthenticated = this.authenticationService.isUserAuthenticated;
+    this.isUserAuthenticated = this.authenticationService.isUserAuthenticated();
     this.user = this.authenticationService.userData;
 
     this.checkUserRoles();
