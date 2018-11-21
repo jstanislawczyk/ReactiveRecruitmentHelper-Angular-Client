@@ -19,19 +19,23 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'application', component: ApplicationComponent },
   { path: 'application/success', component: ApplicationSuccessComponent },
-  { 
+  {
     path: 'login', 
     component: LoginComponent,
     canActivate: [AnonymousFilter]
   },
-  { path: 'logout', component: LogoutComponent },
-  { 
+  {
+    path: 'logout',
+    component: LogoutComponent,
+    canActivate: [AnonymousFilter]
+  },
+  {
     path: 'candidates', 
     component: CandidatesComponent, 
     canActivate: [RoleFilter], 
     data: {expectedRole: 'RECRUITER'} 
   },
-  { 
+  {
     path: 'account', 
     component: AccountComponent, 
     canActivate: [AuthenticationFilter] 
