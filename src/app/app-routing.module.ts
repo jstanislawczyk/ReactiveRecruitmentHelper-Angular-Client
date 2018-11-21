@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthenticationGuardServiceService as AuthenticationFilter } from './services/authentication/route-guards/authentication-guard-service/authentication-guard-service.service';
+import { AuthenticationGuardService as AuthenticationFilter } from './services/authentication/route-guards/authentication-guard-service/authentication-guard.service';
 
 import { HomeComponent } from './home/home.component';
 import { ApplicationComponent } from './application/application.component';
