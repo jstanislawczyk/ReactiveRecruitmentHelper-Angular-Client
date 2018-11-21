@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'application', component: ApplicationComponent },
   { path: 'application/success', component: ApplicationSuccessComponent },
   {
-    path: 'login', 
+    path: 'login',
     component: LoginComponent,
     canActivate: [AnonymousFilter]
   },
@@ -30,15 +30,15 @@ const routes: Routes = [
     canActivate: [AnonymousFilter]
   },
   {
-    path: 'candidates', 
-    component: CandidatesComponent, 
-    canActivate: [RoleFilter], 
-    data: {expectedRole: 'RECRUITER'} 
+    path: 'candidates',
+    component: CandidatesComponent,
+    canActivate: [RoleFilter],
+    data: {expectedRole: 'RECRUITER'}
   },
   {
-    path: 'account', 
-    component: AccountComponent, 
-    canActivate: [AuthenticationFilter] 
+    path: 'account',
+    component: AccountComponent,
+    canActivate: [AuthenticationFilter]
   },
   { path: '**', component: PageNotFoundComponent }
 ];

@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../authentication-service/authenticati
 export class RoleGuardService implements CanActivate {
 
   constructor(
-    public authenticationService: AuthenticationService, 
+    public authenticationService: AuthenticationService,
     public router: Router
   ) {}
 
@@ -16,7 +16,7 @@ export class RoleGuardService implements CanActivate {
     const expectedRole = route.data.expectedRole;
     const userHasExpectedRole = this.authenticationService.userHasExpectedRole(expectedRole);
 
-    if(!userHasExpectedRole) {
+    if (!userHasExpectedRole) {
       this.router.navigate(['login']).then();
     }
 

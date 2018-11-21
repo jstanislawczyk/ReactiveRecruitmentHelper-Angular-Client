@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../services/authentication/authentication-service/authentication.service';
 import {Router} from '@angular/router';
-import {User} from '../classes/User';
 
 @Component({
   selector: 'app-navigation',
@@ -33,11 +32,11 @@ export class NavigationComponent implements OnInit {
   }
 
   private checkUserRoles() {
-    if(this.authenticationService.userHasExpectedRole('RECRUITER')) {
+    if (this.authenticationService.userHasExpectedRole('RECRUITER')) {
       this.isRecruiter = true;
     }
 
-    if(this.authenticationService.userHasExpectedRole('ADMIN')) {
+    if (this.authenticationService.userHasExpectedRole('ADMIN')) {
       this.isAdmin = true;
     }
   }

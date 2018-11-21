@@ -57,12 +57,12 @@ export class AuthenticationService {
   userHasExpectedRole(expectedRole: string): boolean {
     let hasExpectedRole = false;
 
-    if(this.userData != null) {
+    if (this.userData != null) {
       this.userData.roles.forEach(role => {
-        if(role.authority === expectedRole) {
+        if (role.authority === expectedRole) {
           hasExpectedRole = true;
         }
-      })
+      });
     }
 
     return hasExpectedRole;

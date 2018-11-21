@@ -18,7 +18,7 @@ export class NavigationDesktopComponent implements OnInit {
 
   ngOnInit() { }
 
-  logout(): void { 
+  logout(): void {
     this.onLogout.emit();
   }
 }
