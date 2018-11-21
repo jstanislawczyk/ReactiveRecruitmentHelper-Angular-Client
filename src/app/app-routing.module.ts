@@ -24,11 +24,7 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [AnonymousFilter]
   },
-  { 
-    path: 'logout', 
-    component: LogoutComponent, 
-    canActivate: [AuthenticationFilter] 
-  },
+  { path: 'logout', component: LogoutComponent },
   { 
     path: 'candidates', 
     component: CandidatesComponent, 
