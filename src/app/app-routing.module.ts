@@ -13,6 +13,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { CandidatesComponent } from './candidates/candidates.component';
 import { AccountComponent } from './account/account.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UsersComponent } from './users/users.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,12 @@ const routes: Routes = [
     path: 'logout',
     component: LogoutComponent,
     canActivate: [AnonymousFilter]
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [RoleFilter],
+    data: {expectedRole: 'ADMIN'}
   },
   {
     path: 'candidates',

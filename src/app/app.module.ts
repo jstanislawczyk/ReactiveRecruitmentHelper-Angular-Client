@@ -22,6 +22,7 @@ import { CandidatesComponent } from './candidates/candidates.component';
 import { AccountComponent } from './account/account.component';
 import { LogoutComponent } from './logout/logout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CandidatesComponent,
     AccountComponent,
     LogoutComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
