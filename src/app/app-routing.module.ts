@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { AuthenticationGuardService as AuthenticationFilter } from './services/authentication/route-guards/authentication-guard-service/authentication-guard.service';
+import { AnonymousGuardService as AnonymousFilter } from './services/authentication/route-guards/anonymous-guard-service/anonymous-guard.service';
+import { RoleGuardService as RoleFilter } from './services/authentication/route-guards/role-guard-service/role-guard.service';
 
 import { HomeComponent } from './home/home.component';
 import { ApplicationComponent } from './application/application.component';
@@ -16,10 +19,27 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'application', component: ApplicationComponent },
   { path: 'application/success', component: ApplicationSuccessComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent, canActivate: [AuthenticationFilter] },
-  { path: 'candidates', component: CandidatesComponent, canActivate: [AuthenticationFilter] },
-  { path: 'account', component: AccountComponent, canActivate: [AuthenticationFilter] },
+  { 
+    path: 'login', 
+    component: LoginComponent,
+    canActivate: [AnonymousFilter]
+  },
+  { 
+    path: 'logout', 
+    component: LogoutComponent, 
+    canActivate: [AuthenticationFilter] 
+  },
+  { 
+    path: 'candidates', 
+    component: CandidatesComponent, 
+    canActivate: [RoleFilter], 
+    data: {expectedRole: 'RECRUITER'} 
+  },
+  { 
+    path: 'account', 
+    component: AccountComponent, 
+    canActivate: [AuthenticationFilter] 
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 
