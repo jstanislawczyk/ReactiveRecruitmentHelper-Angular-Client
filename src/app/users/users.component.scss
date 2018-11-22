@@ -20,7 +20,8 @@
     font-weight: 500;
   }
 
-  &__input-label {
+  &__input-label,
+  &__input-label--checkbox-label {
     width: 100%;
     max-width: 300px;
     position: relative;
@@ -62,15 +63,25 @@
     align-items: center;
     background: $light-grey;
     color: #fff;
-    border-radius: 2px;
+    border-radius: 3px;
+
+    &--checked {
+      background: $dark-grey;
+      color: $pear-green;
+    }
+
+    &:last-child {
+      margin-bottom: 30px;
+    }
   }
 
-  &-checkbox-title {
-
+  &__checkbox-title {
+    text-transform: lowercase;
   }
 
-  &-checkbox {
-    
+  &__checkbox {
+    width: 20px;
+    height: 20px;
   }
 
   &__submit {
@@ -93,7 +104,8 @@
       font-size: 2rem;
     }
 
-    &__input-label {
+    &__input-label,
+    &__input-label--checkbox-label{
       max-width: 400px;
     }
 
@@ -103,6 +115,12 @@
 
       &--textarea {
         height: 160px;
+        margin-bottom: 40px;
+      }
+    }
+
+    &__checkbox-section {
+      &:last-child {
         margin-bottom: 40px;
       }
     }
@@ -128,6 +146,12 @@
 
       &--medium {
         width: 70%;
+      }
+    }
+
+    &__checkbox-section {
+      &:last-child {
+        margin-bottom: 50px;
       }
     }
 
