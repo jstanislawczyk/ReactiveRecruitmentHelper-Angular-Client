@@ -75,10 +75,10 @@
         }
 
         &--disabled {
-            color: #666;
+            color: $light-grey;
 
             &:hover {
-                color: #666;
+                color: $light-grey;
                 cursor: default;
             }
         }
