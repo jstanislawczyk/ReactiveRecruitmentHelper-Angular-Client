@@ -20,14 +20,6 @@
     font-weight: 500;
   }
 
-  &__technology-group {
-    margin-bottom: 30px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
   &__input-label {
     width: 100%;
     max-width: 300px;
@@ -45,54 +37,10 @@
     margin-bottom: 5px;
   }
 
-  &__input-group {
-    margin-bottom: 30px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &__input-group-button {
-    width: 35px;
-    height: 35px;
-    position: absolute;
-    bottom: 30px;
-    right: 0;
-    border: none;
-    border-radius: 3px;
-    background: #000;
-    font-size: 30px;
-    color: #fff;
-
-    &--decrease {
-      bottom: 96px;
-    }
-
-    &:hover {
-      color: $pear-green;
-      cursor: pointer;
-    }
-
-    &--disabled {
-      color: #666;
-
-      &:hover {
-        color: #666;
-        cursor: default;
-      }
-    }
-  }
-
   &__input {
     width: 100%;
     height: 30px;
     @include form-input();
-
-    &--textarea {
-      height: 130px;
-      margin-bottom: 30px;
-    }
 
     &--medium {
       width: 60%;
@@ -102,6 +50,27 @@
       width: 15%;
       margin-left: 15px;
     }
+  }
+
+  &__checkbox-section {
+    width: calc(100% - 60px);
+    height: 50px;
+    margin-bottom: 30px;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $light-grey;
+    color: #fff;
+    border-radius: 2px;
+  }
+
+  &-checkbox-title {
+
+  }
+
+  &-checkbox {
+    
   }
 
   &__submit {
@@ -126,15 +95,6 @@
 
     &__input-label {
       max-width: 400px;
-    }
-
-    &__input-group-button {
-      width: 46px;
-      height: 46px;
-
-      &--decrease {
-        bottom: 106px;
-      }
     }
 
     &__input {
@@ -165,11 +125,6 @@
 
     &__input {
       font-size: 1.2rem;
-
-      &--textarea {
-        height: 200px;
-        margin-bottom: 50px;
-      }
 
       &--medium {
         width: 70%;

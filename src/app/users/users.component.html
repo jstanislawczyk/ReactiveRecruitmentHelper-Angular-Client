@@ -23,12 +23,14 @@
 
     <label class="users__input-label">
       <p class="users__input-title">Roles:</p>
-      <p>
-        Admin <input class="users__input--checkbox" type="checkbox" name="authority" value="ADMIN" />
-      </p>
-      <p>
-        Recruiter <input class="users__input--checkbox" type="checkbox" name="authority" value="RECRUITER" />
-      </p>
+      <div class="users__checkbox-section">
+        <span class="users__checkbox-title">Admin</span> 
+        <input class="users__checkbox" type="checkbox" name="authority" value="ADMIN" />
+      </div>
+      <div class="users__checkbox-section">
+        <span class="users__checkbox-title">Recruiter</span>  
+        <input class="users__checkbox" type="checkbox" name="authority" value="RECRUITER" />
+      </div>
     </label>
 
     <re-captcha (resolved)="captchaResolved()" siteKey="6LfIlnoUAAAAAIqJ55Iyt5A00mCLVfVoIkdPUgT7"></re-captcha>
