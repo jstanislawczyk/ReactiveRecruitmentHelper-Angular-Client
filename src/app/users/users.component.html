@@ -1,24 +1,77 @@
 <section class="users">
   <h2 class="users__title">Send your application</h2>
-  <form class="users__form">
+  <form [formGroup]="usersCreateForm" (ngSubmit)="createUser()" class="users__form">
     <label class="users__input-label">
       <p class="users__input-title">Email:</p>
-      <input class="users__input" type="email" placeholder="JohnSmith@mail.com" />
+      <input [ngClass]="{'users__input-error': isFormSubmitted && usersCreateForm.controls.email.errors}" formControlName="email" class="users__input" type="email" placeholder="JohnSmith@mail.com" />
+
+      <div *ngIf="usersCreateForm.controls.email.errors && isFormSubmitted" class="users__input-info-error">
+        <div *ngIf="usersCreateForm.controls.email.errors.required">
+          Email is required 
+        </div>
+
+        <div *ngIf="usersCreateForm.controls.email.errors.email">
+          Email is not valid
+        </div>
+      </div>
+
     </label>
 
     <label class="users__input-label">
       <p class="users__input-title">Password:</p>
-      <input class="users__input" type="password" placeholder="Password" />
+      <input [ngClass]="{'users__input-error': isFormSubmitted && usersCreateForm.controls.password.errors}" formControlName="password" class="users__input" type="password" placeholder="Password" />
+    
+      <div *ngIf="usersCreateForm.controls.password.errors && isFormSubmitted" class="users__input-info-error">
+        <div *ngIf="usersCreateForm.controls.password.errors.required">
+          Password is required 
+        </div>
+
+        <div *ngIf="usersCreateForm.controls.password.errors.minlength">
+          Password requires min 5 letters
+        </div>
+
+        <div *ngIf="usersCreateForm.controls.password.errors.maxlength">
+          Password requires max 100 letters
+        </div>
+      </div>
     </label>
 
     <label class="users__input-label">
       <p class="users__input-title">First Name:</p>
-      <input class="users__input" type="text" placeholder="John" />
+      <input [ngClass]="{'users__input-error': isFormSubmitted && usersCreateForm.controls.firstName.errors}" formControlName="firstName" class="users__input" type="text" placeholder="John" />
+    
+      <div *ngIf="usersCreateForm.controls.firstName.errors && isFormSubmitted" class="users__input-info-error">
+        <div *ngIf="usersCreateForm.controls.firstName.errors.required">
+          First name is required 
+        </div>
+
+        <div *ngIf="usersCreateForm.controls.firstName.errors.minlength">
+          First name requires min 3 letters
+        </div>
+
+        <div *ngIf="usersCreateForm.controls.firstName.errors.maxlength">
+          First name requires max 60 letters
+        </div>
+      </div>
     </label>
 
     <label class="users__input-label">
       <p class="users__input-title">Last Name:</p>
-      <input class="users__input" type="text" placeholder="Smith" />
+      <input [ngClass]="{'users__input-error': isFormSubmitted && usersCreateForm.controls.lastName.errors}" formControlName="lastName" class="users__input" type="text" placeholder="Smith" />
+    
+      <div *ngIf="usersCreateForm.controls.lastName.errors && isFormSubmitted" class="users__input-info-error">
+        <div *ngIf="usersCreateForm.controls.lastName.errors.required">
+          Last name is required 
+        </div>
+
+        <div *ngIf="usersCreateForm.controls.lastName.errors.minlength">
+          Last name requires min 3 letters
+        </div>
+
+        <div *ngIf="usersCreateForm.controls.lastName.errors.maxlength">
+          Last name requires max 80 letters
+        </div>
+      </div>
     </label>
 
     <div class="users__input-label--checkbox-label">
