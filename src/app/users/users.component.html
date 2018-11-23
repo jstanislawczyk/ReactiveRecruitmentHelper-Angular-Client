@@ -21,13 +21,13 @@
       <input class="users__input" type="text" placeholder="Smith" />
     </label>
 
-    <label class="users__input-label--checkbox-label">
+    <div class="users__input-label--checkbox-label">
       <p class="users__input-title">Roles:</p>
-      <div *ngFor="let role of rolesList; let i = index" [ngClass]="{'users__checkbox-section--checked' : rolesCheckStatusList[i]}" class="users__checkbox-section">
+      <label *ngFor="let role of rolesList; let i = index" [ngClass]="{'users__checkbox-section--checked' : rolesCheckStatusList[i]}" class="users__checkbox-section">
         <span class="users__checkbox-title">{{role.authority}}</span>
         <input (change)="changeStyleOnCheckStatusChange(i)" class="users__checkbox" type="checkbox" name="authority" value="ADMIN" />
-      </div>
-    </label>
+      </label>
+    </div>
 
     <re-captcha (resolved)="captchaResolved()" siteKey="6LfIlnoUAAAAAIqJ55Iyt5A00mCLVfVoIkdPUgT7"></re-captcha>
 
