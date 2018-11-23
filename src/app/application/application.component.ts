@@ -18,8 +18,8 @@ export class ApplicationComponent implements OnInit {
 
   constructor(
     private userApplication: UserApplicationService,
-    private formBuilder: FormBuilder) {
-  }
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
     this.applicationForm = this.createApplicationForm();
