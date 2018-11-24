@@ -33,11 +33,15 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: UserCreateComponent
+    component: UserCreateComponent,
+    canActivate: [RoleFilter],
+    data: {expectedRole: 'ADMIN'}
   },
   {
     path: 'users/success',
-    component: UsersCreateSuccessComponent
+    component: UsersCreateSuccessComponent,
+    canActivate: [RoleFilter],
+    data: {expectedRole: 'ADMIN'}
   },
   {
     path: 'candidates',
