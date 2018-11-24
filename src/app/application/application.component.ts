@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
-import {UserApplicationService} from '../services/application-service/user-application.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { UserApplicationService } from '../services/application-service/user-application.service';
 
 @Component({
   selector: 'app-application',

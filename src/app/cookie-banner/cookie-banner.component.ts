@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {CookieService} from 'ngx-cookie-service';
-import {CookieBannerDisplayService} from '../services/cookie-banner-service/cookie-banner-display.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { CookieBannerDisplayService } from '../services/cookie-banner-service/cookie-banner-display.service';
 
 
 @Component({
