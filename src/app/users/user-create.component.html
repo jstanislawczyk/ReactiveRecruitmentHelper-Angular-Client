@@ -1,0 +1,89 @@
+<section class="user-create">
+  <h2 class="user-create__title">Send your application</h2>
+  <form [formGroup]="userCreateForm" (ngSubmit)="createUser()" class="user-create__form">
+    <label class="user-create__input-label">
+      <p class="user-create__input-title">Email:</p>
+      <input [ngClass]="{'user-create__input-error': isFormSubmitted && userCreateForm.controls.email.errors}" formControlName="email" class="user-create__input" type="email" placeholder="JohnSmith@mail.com" />
+
+      <div *ngIf="userCreateForm.controls.email.errors && isFormSubmitted" class="user-create__input-info-error">
+        <div *ngIf="userCreateForm.controls.email.errors.required">
+          Email is required 
+        </div>
+
+        <div *ngIf="userCreateForm.controls.email.errors.email">
+          Email is not valid
+        </div>
+      </div>
+
+    </label>
+
+    <label class="user-create__input-label">
+      <p class="user-create__input-title">Password:</p>
+      <input [ngClass]="{'user-create__input-error': isFormSubmitted && userCreateForm.controls.password.errors}" formControlName="password" class="user-create__input" type="password" placeholder="Password" />
+    
+      <div *ngIf="userCreateForm.controls.password.errors && isFormSubmitted" class="user-create__input-info-error">
+        <div *ngIf="userCreateForm.controls.password.errors.required">
+          Password is required 
+        </div>
+
+        <div *ngIf="userCreateForm.controls.password.errors.minlength">
+          Password requires min 5 letters
+        </div>
+
+        <div *ngIf="userCreateForm.controls.password.errors.maxlength">
+          Password requires max 100 letters
+        </div>
+      </div>
+    </label>
+
+    <label class="user-create__input-label">
+      <p class="user-create__input-title">First Name:</p>
+      <input [ngClass]="{'user-create__input-error': isFormSubmitted && userCreateForm.controls.firstName.errors}" formControlName="firstName" class="user-create__input" type="text" placeholder="John" />
+    
+      <div *ngIf="userCreateForm.controls.firstName.errors && isFormSubmitted" class="user-create__input-info-error">
+        <div *ngIf="userCreateForm.controls.firstName.errors.required">
+          First name is required 
+        </div>
+
+        <div *ngIf="userCreateForm.controls.firstName.errors.minlength">
+          First name requires min 3 letters
+        </div>
+
+        <div *ngIf="userCreateForm.controls.firstName.errors.maxlength">
+          First name requires max 60 letters
+        </div>
+      </div>
+    </label>
+
+    <label class="user-create__input-label">
+      <p class="user-create__input-title">Last Name:</p>
+      <input [ngClass]="{'user-create__input-error': isFormSubmitted && userCreateForm.controls.lastName.errors}" formControlName="lastName" class="user-create__input" type="text" placeholder="Smith" />
+    
+      <div *ngIf="userCreateForm.controls.lastName.errors && isFormSubmitted" class="user-create__input-info-error">
+        <div *ngIf="userCreateForm.controls.lastName.errors.required">
+          Last name is required 
+        </div>
+
+        <div *ngIf="userCreateForm.controls.lastName.errors.minlength">
+          Last name requires min 3 letters
+        </div>
+
+        <div *ngIf="userCreateForm.controls.lastName.errors.maxlength">
+          Last name requires max 80 letters
+        </div>
+      </div>
+    </label>
+
+    <div class="user-create__input-label--checkbox-label">
+      <p class="user-create__input-title">Roles:</p>
+      <label *ngFor="let role of rolesList; let i = index" [ngClass]="{'user-create__checkbox-section--checked' : rolesCheckStatusList[i]}" class="user-create__checkbox-section">
+        <span class="user-create__checkbox-title">{{role.authority}}</span>
+        <input (change)="changeStyleOnCheckStatusChange(i)" class="user-create__checkbox" type="checkbox" name="authority" value="ADMIN" />
+      </label>
+    </div>
+
+    <re-captcha (resolved)="captchaResolved()" siteKey="6LfIlnoUAAAAAIqJ55Iyt5A00mCLVfVoIkdPUgT7"></re-captcha>  
+
+    <button [ngClass]="{'user-create__submit--disabled': isCaptchaNotResolved}" [disabled]="isCaptchaNotResolved" class="user-create__submit">Create user</button>
+  </form>
+</section>

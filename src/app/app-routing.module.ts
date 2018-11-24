@@ -13,7 +13,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { CandidatesComponent } from './candidates/candidates.component';
 import { AccountComponent } from './account/account.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { UsersComponent } from './users/users.component';
+import { UserCreateComponent } from './users/user-create.component';
+import { UsersCreateSuccessComponent } from './users/user-create-success/user-create-success.component';
 
 
 const routes: Routes = [
@@ -32,9 +33,11 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: UsersComponent,
-    canActivate: [RoleFilter],
-    data: {expectedRole: 'ADMIN'}
+    component: UserCreateComponent
+  },
+  {
+    path: 'users/success',
+    component: UsersCreateSuccessComponent
   },
   {
     path: 'candidates',
