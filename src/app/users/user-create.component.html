@@ -80,6 +80,12 @@
         <span class="user-create__checkbox-title">{{role.authority}}</span>
         <input (change)="changeStyleOnCheckStatusChange(i)" class="user-create__checkbox" type="checkbox" name="authority" value="ADMIN" />
       </label>
+
+      <p class="user-create__input-title">Active:</p>
+      <label class="user-create__checkbox-section">
+        <span class="user-create__checkbox-title">Active</span>
+        <input formControlName="active" class="user-create__checkbox" type="checkbox" name="active" value="true" checked/>
+      </label>
     </div>
 
     <re-captcha (resolved)="captchaResolved()" siteKey="6LfIlnoUAAAAAIqJ55Iyt5A00mCLVfVoIkdPUgT7"></re-captcha>  

@@ -14,9 +14,10 @@ export class UserCreateComponent implements OnInit {
   isCaptchaNotResolved = true;
   rolesList = UserCreateComponent.setupRoles();
   rolesCheckStatusList = this.setupCheckedRolesList();
+  isUserActive = true;
   isFormSubmitted = false;
 
-  constructor(
+  constructor (
     private formBuilder: FormBuilder,
     private userCreateService: UserCreateService
   ) { }
@@ -32,7 +33,7 @@ export class UserCreateComponent implements OnInit {
     return new Array(this.rolesList.length).fill(false);
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.userCreateForm = this.createUsersCreateForm();
   }
 
@@ -49,7 +50,8 @@ export class UserCreateComponent implements OnInit {
       ],
       lastName: [
         '', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]
-      ]
+      ],
+      active: []
     });
   }
 
@@ -61,7 +63,7 @@ export class UserCreateComponent implements OnInit {
     this.rolesCheckStatusList[index] = !this.rolesCheckStatusList[index];
   }
 
-  createUser(): void { 
+  createUser(): void {
     this.isFormSubmitted = true;
 
     if (this.userCreateForm.valid) {

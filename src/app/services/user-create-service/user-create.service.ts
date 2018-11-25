@@ -14,7 +14,7 @@ export class UserCreateService {
     private router: Router
   ) { }
 
-  sendUserCreateForm(userDataJson: String): void{
+  sendUserCreateForm(userDataJson: String): void {
     const header = this.createHeader();
 
     this.http
