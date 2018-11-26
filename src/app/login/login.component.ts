@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
       () => {
         this.isUserAuthenticated = false;
         this.isFormSubmitted = true;
-        localStorage.setItem('userAuthenticated', `${this.isUserAuthenticated}`);
       });
   }
 }
