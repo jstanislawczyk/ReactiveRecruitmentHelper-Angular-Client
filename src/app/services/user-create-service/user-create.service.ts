@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication/authentication-service/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,13 @@ export class UserCreateService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) { }
 
   sendUserCreateForm(userDataJson: String): void {
     const header = this.createHeader();
-
+    
     this.http
       .post(this.userCreateUri, userDataJson, header)
       .subscribe(
@@ -30,7 +32,8 @@ export class UserCreateService {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': `Basic ${this.authenticationService.userAuthenticationToken}`
       })
     };
   }
