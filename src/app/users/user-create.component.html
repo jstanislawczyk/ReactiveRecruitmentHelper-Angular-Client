@@ -82,9 +82,9 @@
       </label>
 
       <p class="user-create__input-title">Active:</p>
-      <label class="user-create__checkbox-section">
+      <label [ngClass]="{'user-create__checkbox-section--checked' : userCreateForm.controls.active.value}" class="user-create__checkbox-section">
         <span class="user-create__checkbox-title">Active</span>
-        <input formControlName="active" class="user-create__checkbox" type="checkbox" name="active" value="true" checked/>
+        <input formControlName="active" class="user-create__checkbox" type="checkbox" name="active" />
       </label>
     </div>
 
