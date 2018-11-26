@@ -52,17 +52,6 @@ export class ApplicationComponent implements OnInit {
     });
   }
 
-  createTechnology(): FormGroup {
-    return this.formBuilder.group({
-      name: [
-        '', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]
-      ],
-      knowledgeLevel: [
-        '', [Validators.required, Validators.min(1), Validators.max(10)]
-      ]
-    });
-  }
-
   expandTechnologyInputGroup(): void {
     const technologiesList = <FormArray>this.applicationForm.controls.technologies;
 
@@ -79,8 +68,19 @@ export class ApplicationComponent implements OnInit {
     }
   }
 
+  createTechnology(): FormGroup {
+    return this.formBuilder.group({
+      name: [
+        '', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]
+      ],
+      knowledgeLevel: [
+        '', [Validators.required, Validators.min(1), Validators.max(10)]
+      ]
+    });
+  }
+
   decreaseTechnologyInputGroup(): void {
-    const technologiesList = <FormArray>this.applicationForm.controls.technologies;
+    const technologiesList = <FormArray> this.applicationForm.controls.technologies;
 
     if (technologiesList.length === 2) {
       this.decreaseButtonEnabled = false;
