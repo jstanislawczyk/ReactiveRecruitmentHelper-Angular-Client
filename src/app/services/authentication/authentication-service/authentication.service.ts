@@ -14,6 +14,7 @@ export class AuthenticationService {
 
   authenticationUri = 'http://localhost:8090/login';
   userData: User;
+  userAuthenticationToken: string;
 
   static createHeader(): Object {
     return {
@@ -35,19 +36,31 @@ export class AuthenticationService {
       .post(this.authenticationUri, userDataJson, header)
       .pipe(
         map(result => {
-          this.userData = <User> result;
-          localStorage.setItem('userData', JSON.stringify(this.userData));
+          this.setupUserData(<User> result);
+          this.setupUserAuthenticationToken(email, password);
         })
       );
   }
 
+  setupUserData(user: User): void {
+    this.userData = user;
+    localStorage.setItem('userData', JSON.stringify(this.userData));
+  }
+
+  setupUserAuthenticationToken(email: string, password: string): void {
+    this.userAuthenticationToken = btoa(`${email}:${password}`); 
+    localStorage.setItem('userAuthenticationToken', this.userAuthenticationToken);
+  }
+
   loadUserAuthenticationStatus(): void {
     this.userData = JSON.parse(localStorage.getItem('userData'));
+    this.userAuthenticationToken = localStorage.getItem('userAuthenticationToken');
   }
 
   logoutUser(): void {
     this.userData = null;
     localStorage.removeItem('userData');
+    localStorage.removeItem('userAuthenticationToken');
   }
 
   isUserAuthenticated(): boolean {
