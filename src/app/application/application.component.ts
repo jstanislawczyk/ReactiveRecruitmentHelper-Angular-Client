@@ -53,7 +53,7 @@ export class ApplicationComponent implements OnInit {
   }
 
   expandTechnologyInputGroup(): void {
-    const technologiesList = <FormArray>this.applicationForm.controls.technologies;
+    const technologiesList = <FormArray> this.applicationForm.controls.technologies;
 
     if (technologiesList.length < this.maxInputGroupSize) {
       technologiesList.push(this.createTechnology());
