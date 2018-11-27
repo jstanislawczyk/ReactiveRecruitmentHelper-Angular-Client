@@ -27,9 +27,6 @@
           <a *ngIf="isUserAuthenticated && isAdmin" (click)="handleMobileSidebarVisibility()" routerLink="/users" class="mobile-nav__link">Users</a>
         </li>
         <li class="mobile-nav__list-element">
-          <a *ngIf="isUserAuthenticated && isAdmin" (click)="handleMobileSidebarVisibility()" routerLink="/user-create" class="mobile-nav__link">Create user</a>
-        </li>
-        <li class="mobile-nav__list-element">
           <a *ngIf="isUserAuthenticated && isRecruiter" (click)="handleMobileSidebarVisibility()" routerLink="/candidates" class="mobile-nav__link">Candidates</a>
         </li>
         <li class="mobile-nav__list-element">
