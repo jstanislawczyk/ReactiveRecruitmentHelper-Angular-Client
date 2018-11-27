@@ -15,19 +15,20 @@ import { AccountComponent } from './account/account.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UsersCreateSuccessComponent } from './user-create/user-create-success/user-create-success.component';
+import {UsersComponent} from './users/users.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { 
-    path: 'application', 
+  {
+    path: 'application',
     component: ApplicationComponent,
-    canActivate: [AnonymousFilter] 
+    canActivate: [AnonymousFilter]
   },
-  { 
-    path: 'application/success', 
+  {
+    path: 'application/success',
     component: ApplicationSuccessComponent,
-    canActivate: [AnonymousFilter] 
+    canActivate: [AnonymousFilter]
   },
   {
     path: 'login',
@@ -40,14 +41,20 @@ const routes: Routes = [
     canActivate: [AnonymousFilter]
   },
   {
-    path: 'users',
+    path: 'user-create',
     component: UserCreateComponent,
     canActivate: [RoleFilter],
     data: {expectedRole: 'ADMIN'}
   },
   {
-    path: 'users/success',
+    path: 'user-create/success',
     component: UsersCreateSuccessComponent,
+    canActivate: [RoleFilter],
+    data: {expectedRole: 'ADMIN'}
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
     canActivate: [RoleFilter],
     data: {expectedRole: 'ADMIN'}
   },
