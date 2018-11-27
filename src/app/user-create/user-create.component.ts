@@ -69,19 +69,19 @@ export class UserCreateComponent implements OnInit {
     if (this.userCreateForm.valid) {
       this.userCreateForm.controls.roles = this.createUserRoleList();
       const userCreateFormAsJson = JSON.stringify(this.userCreateForm.getRawValue());
-      
+
       this.userCreateService.sendUserCreateForm(userCreateFormAsJson);
     }
   }
 
   private createUserRoleList(): FormArray {
-    let userRolesList = this.formBuilder.array([]);
+    const userRolesList = this.formBuilder.array([]);
 
     this.rolesCheckStatusList.forEach((roleStatus, index) => {
-      if(roleStatus) {
+      if (roleStatus) {
         userRolesList.push(this.createUserRole(this.rolesList[index].authority));
       }
-    })
+    });
 
     return userRolesList;
   }
