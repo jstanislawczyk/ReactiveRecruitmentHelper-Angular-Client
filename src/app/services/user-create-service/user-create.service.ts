@@ -22,9 +22,7 @@ export class UserCreateService {
     this.http
       .post(this.userCreateUri, userDataJson, header)
       .subscribe(
-        () => {
-          this.router.navigate(['users/success']).then();
-        }
+        () => this.router.navigate(['users/success']).then() 
       );
   }
 

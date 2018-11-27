@@ -5,7 +5,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './navigation-mobile.component.html',
   styleUrls: ['./navigation-mobile.component.scss']
 })
-
 export class NavigationMobileComponent implements OnInit {
 
   @Input() isUserAuthenticated: boolean;
@@ -16,11 +15,9 @@ export class NavigationMobileComponent implements OnInit {
 
   mobileSidebarOpened = false;
 
-  constructor() {
-  }
+  constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   logout(): void {
     this.handleMobileSidebarVisibility();

@@ -10,7 +10,7 @@ export class RoleGuardService implements CanActivate {
   constructor(
     public authenticationService: AuthenticationService,
     public router: Router
-  ) {}
+  ) { }
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data.expectedRole;

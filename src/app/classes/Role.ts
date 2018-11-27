@@ -11,4 +11,4 @@ class Role {
   }
 }
 
-export {Role};
+export { Role };

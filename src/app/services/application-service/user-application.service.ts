@@ -10,8 +10,7 @@ export class UserApplicationService {
   constructor(
     private http: HttpClient,
     private router: Router
-  ) {
-  }
+  ) { }
 
   private jobApplicationUri = 'http://localhost:8090/jobs';
   candidateFirstName = '';

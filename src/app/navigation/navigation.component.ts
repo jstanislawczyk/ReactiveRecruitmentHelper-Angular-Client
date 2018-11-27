@@ -15,8 +15,8 @@ export class NavigationComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router) {
-  }
+    private router: Router
+  ) { }
 
   ngOnInit() { }
 
@@ -31,7 +31,7 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['logout']).then();
   }
 
-  private checkUserRoles() {
+  private checkUserRoles(): void {
     if (this.authenticationService.userHasExpectedRole('RECRUITER')) {
       this.isRecruiter = true;
     }
@@ -41,7 +41,7 @@ export class NavigationComponent implements OnInit {
     }
   }
 
-  private setUserRolesToDefault() {
+  private setUserRolesToDefault(): void {
     this.isAdmin = false;
     this.isRecruiter = false;
   }

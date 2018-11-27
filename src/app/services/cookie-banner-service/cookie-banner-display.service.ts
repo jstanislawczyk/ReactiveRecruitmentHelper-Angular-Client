@@ -12,8 +12,7 @@ export class CookieBannerDisplayService {
   private cookieBannerHeight = new BehaviorSubject<Number>(0);
   currentCookieBannerHeight = this.cookieBannerHeight.asObservable();
 
-  constructor() {
-  }
+  constructor() { }
 
   changeCookieBannerDisplayState(state: Boolean): void {
     this.cookieBannerDisplayState.next(state);

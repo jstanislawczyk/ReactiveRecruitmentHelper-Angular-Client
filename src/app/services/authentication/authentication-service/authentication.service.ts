@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { User } from '../../../classes/User';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class AuthenticationService {
     return JSON.parse(`{"email": "${email}", "password": "${password}"}`);
   }
 
-  authenticateUser(email: string, password: string) {
+  authenticateUser(email: string, password: string): Observable<void> {
     const header = AuthenticationService.createHeader();
     const userDataJson = AuthenticationService.createUserDataJson(email, password);
 

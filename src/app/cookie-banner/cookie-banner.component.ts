@@ -17,8 +17,7 @@ export class CookieBannerComponent implements OnInit {
   constructor(
     private cookieService: CookieService,
     private cookieBannerDisplayService: CookieBannerDisplayService
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
     this.checkCookieBannerDisplay();
