@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Role } from '../classes/Role';
 import { UserCreateService } from '../services/user-create-service/user-create.service';
 
@@ -51,6 +51,7 @@ export class UserCreateComponent implements OnInit {
       lastName: [
         '', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]
       ],
+      roles: this.formBuilder.array([]),
       active: []
     });
   }
@@ -67,8 +68,28 @@ export class UserCreateComponent implements OnInit {
     this.isFormSubmitted = true;
 
     if (this.userCreateForm.valid) {
+      this.userCreateForm.controls.roles = this.createUserRoleList();
       const userCreateFormAsJson = JSON.stringify(this.userCreateForm.getRawValue());
+      
       this.userCreateService.sendUserCreateForm(userCreateFormAsJson);
     }
+  }
+
+  createUserRoleList(): FormArray {
+    let userRolesList = <FormArray> this.userCreateForm.controls.roles;
+
+    this.rolesCheckStatusList.forEach((roleStatus, index) => {
+      if(roleStatus) {
+        userRolesList.push(this.createUserRole(this.rolesList[index].authority));
+      }
+    })
+
+    return userRolesList;
+  }
+
+  createUserRole(authority: string): FormGroup {
+    return this.formBuilder.group({
+      authority: [authority]
+    });
   }
 }
