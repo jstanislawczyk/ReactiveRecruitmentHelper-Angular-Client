@@ -11,10 +11,9 @@ import { UserCreateService } from '../services/user-create-service/user-create.s
 export class UserCreateComponent implements OnInit {
 
   userCreateForm: FormGroup;
-  isCaptchaNotResolved = true;
-  rolesList = UserCreateComponent.setupRoles();
+  rolesList = this.setupRoles();
   rolesCheckStatusList = this.setupCheckedRolesList();
-  isUserActive = true;
+  isCaptchaNotResolved = true;
   isFormSubmitted = false;
 
   constructor (
@@ -22,22 +21,22 @@ export class UserCreateComponent implements OnInit {
     private userCreateService: UserCreateService
   ) { }
 
-  private static setupRoles() {
+  ngOnInit() {
+    this.userCreateForm = this.createUsersCreateForm();
+  }
+
+  private setupRoles(): Array<Role> {
     return [
       new Role('ADMIN'),
       new Role('RECRUITER')
     ];
   }
 
-  private setupCheckedRolesList() {
+  private setupCheckedRolesList(): Array<boolean> {
     return new Array(this.rolesList.length).fill(false);
   }
 
-  ngOnInit() {
-    this.userCreateForm = this.createUsersCreateForm();
-  }
-
-  createUsersCreateForm(): FormGroup {
+  private createUsersCreateForm(): FormGroup {
     return this.formBuilder.group({
       email: [
         '', [Validators.required, Validators.email]
@@ -75,8 +74,8 @@ export class UserCreateComponent implements OnInit {
     }
   }
 
-  createUserRoleList(): FormArray {
-    let userRolesList = <FormArray> this.userCreateForm.controls.roles;
+  private createUserRoleList(): FormArray {
+    let userRolesList = this.formBuilder.array([]);
 
     this.rolesCheckStatusList.forEach((roleStatus, index) => {
       if(roleStatus) {
@@ -87,7 +86,7 @@ export class UserCreateComponent implements OnInit {
     return userRolesList;
   }
 
-  createUserRole(authority: string): FormGroup {
+  private createUserRole(authority: string): FormGroup {
     return this.formBuilder.group({
       authority: [authority]
     });
