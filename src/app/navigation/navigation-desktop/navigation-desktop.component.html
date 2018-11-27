@@ -6,14 +6,14 @@
       <li class="desktop-nav__list-element">
         <a routerLink="/" class="desktop-nav__link">Home</a>
       </li>
-      <li class="desktop-nav__list-element">
+      <li *ngIf="!isUserAuthenticated" class="desktop-nav__list-element">
         <a routerLink="/application" class="desktop-nav__link">Application</a>
       </li>
       <li *ngIf="!isUserAuthenticated" class="desktop-nav__list-element">
         <a routerLink="/login" class="desktop-nav__link">Login</a>
       </li>
       <li *ngIf="isUserAuthenticated && isAdmin" class="desktop-nav__list-element">
-        <a routerLink="/users" class="desktop-nav__link">Users</a>
+        <a routerLink="/users" class="desktop-nav__link">User create</a>
       </li>
       <li *ngIf="isUserAuthenticated && isRecruiter" class="desktop-nav__list-element">
         <a routerLink="/candidates" class="desktop-nav__link">Candidates</a>

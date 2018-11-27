@@ -19,8 +19,16 @@ import { UsersCreateSuccessComponent } from './users/user-create-success/user-cr
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'application', component: ApplicationComponent },
-  { path: 'application/success', component: ApplicationSuccessComponent },
+  { 
+    path: 'application', 
+    component: ApplicationComponent,
+    canActivate: [AnonymousFilter] 
+  },
+  { 
+    path: 'application/success', 
+    component: ApplicationSuccessComponent,
+    canActivate: [AnonymousFilter] 
+  },
   {
     path: 'login',
     component: LoginComponent,
