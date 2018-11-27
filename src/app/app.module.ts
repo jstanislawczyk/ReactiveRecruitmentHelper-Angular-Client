@@ -24,6 +24,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UsersCreateSuccessComponent } from './user-create/user-create-success/user-create-success.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { UsersCreateSuccessComponent } from './user-create/user-create-success/u
     LogoutComponent,
     PageNotFoundComponent,
     UserCreateComponent,
-    UsersCreateSuccessComponent
+    UsersCreateSuccessComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
