@@ -1,6 +1,12 @@
 <section class="users">
   <h2 class="users__title">Manage users</h2>
-  <a routerLink="/user-create" class="users__create-user-link">Create user</a>
+
+  <div class="users__control-panel">
+    <div class="users__control-panel-buttons">
+      <a routerLink="/user-create" class="users__control-panel-button">Create user</a>
+      <button (click)="findUsers()" class="users__control-panel-button">Find users</button>
+    </div>
+  </div>
 
   <div class="users__list">
     <div class="users__user-label">

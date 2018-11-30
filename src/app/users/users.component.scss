@@ -13,8 +13,20 @@
     font-weight: 500;
   }
 
-  &__create-user-link {
+  &__control-panel {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &__control-panel-buttons {
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__control-panel-button {
     margin: 20px 0;
+    border: 0;
     @include grey-button();
   }
 
@@ -84,7 +96,16 @@
       font-size: 2rem;
     }
 
-    &__create-user-link {
+    &__control-panel {
+      max-width: 600px;
+    }
+
+    &__control-panel-buttons {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__control-panel-button {
       margin: 30px 0;
       align-self: flex-start;
     }
@@ -131,7 +152,11 @@
       font-size: 2.5rem;
     }
 
-    &__create-user-link {
+    &__control-panel {
+      max-width: 1500px;
+    }
+
+    &__control-panel-button {
       margin-bottom: 60px;
     }
 
