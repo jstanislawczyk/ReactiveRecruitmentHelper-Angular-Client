@@ -32,19 +32,19 @@
 
   &__list {
     width: 100%;
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__user-label {
     width: 100%;
     max-width: 400px;
-    margin: 20px auto;
+    margin: 20px 10px;
     display: flex;
     flex-direction: column;
     border: 2px solid $dark-grey;
-
-    &:last-child {
-      margin-bottom: 40px;
-    }
   }
 
   &__user-data {

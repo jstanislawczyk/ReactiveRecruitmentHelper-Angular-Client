@@ -9,14 +9,14 @@
   </div>
 
   <div class="users__list">
-    <div class="users__user-label">
+    <div *ngFor="let user of usersList;" class="users__user-label">
       <div class="users__user-data">
         <div class="users__user-data-field">
           <div class="users__user-data-key">
             <span class="users__user-data-key-text">Name:</span>
           </div>
           <div class="users__user-data-value">
-            John Smith
+            {{ user.firstName }} {{ user.lastName }}
           </div>
         </div>
 
@@ -25,7 +25,7 @@
              <span class="users__user-data-key-text">Email:</span>
           </div>
           <div class="users__user-data-value">
-            John@test.com
+            {{ user.email }}
           </div>
         </div>
 
@@ -34,7 +34,9 @@
              <span class="users__user-data-key-text">Roles:</span>
           </div>
           <div class="users__user-data-value">
-            Admin, Recruiter
+            <span *ngFor="let role of user.roles">
+              {{ role.authority }}
+            </span>
           </div>
         </div>
       </div>
