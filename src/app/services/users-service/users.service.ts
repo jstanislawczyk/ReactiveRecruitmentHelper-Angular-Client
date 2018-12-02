@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from '../authentication/authentication-service/authentication.service';
 import {User} from '../../classes/User';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,21 +10,17 @@ import {User} from '../../classes/User';
 export class UsersService {
 
   private usersServiceUri = 'http://localhost:8090/users';
-  private usersList: Array<User>;
 
   constructor(
     private http: HttpClient,
     private authenticationService: AuthenticationService
   ) { }
 
-  findUsers(): void {
+  findUsers(): Observable<Object> {
     const header = this.createHeader();
 
-    this.http
-      .get(this.usersServiceUri, header)
-      .subscribe(
-        (result) => console.log(result)
-      );
+    return this.http
+      .get(this.usersServiceUri, header);
   }
 
   private createHeader(): Object {
