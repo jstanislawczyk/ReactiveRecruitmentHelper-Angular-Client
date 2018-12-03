@@ -8,6 +8,11 @@
     </div>
   </div>
 
+  <div class="users__errors">
+    <p *ngIf="removeUserErrorOccurred" class="users__error-message">Couldn't remove user. Error occurred</p>
+    <p *ngIf="findUsersErrorOccurred" class="users__error-message">Couldn't find users. Error occurred</p>
+  </div>
+
   <div class="users__list">
     <div *ngFor="let user of usersList;" class="users__user-label">
       <div class="users__user-data">
@@ -42,7 +47,7 @@
       </div>
       <div class="users__user-control-buttons">
         <button class="users__button">Activate user</button>
-        <button class="users__button">Remove user</button>
+        <button (click)="deleteUserById(user._id)" class="users__button">Remove user</button>
       </div>
     </div>
   </div>

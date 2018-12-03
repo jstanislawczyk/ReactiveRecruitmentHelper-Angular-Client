@@ -30,6 +30,10 @@
     @include grey-button();
   }
 
+  &__error-message {
+    color: #f00;
+  }
+
   &__list {
     width: 100%;
     margin-bottom: 40px;
