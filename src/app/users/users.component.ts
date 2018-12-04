@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
   usersList: Array<User>;
   private removeUserErrorOccurred = false;
   private findUsersErrorOccurred = false;
+  private isDeleteConfirmationPopupOpened = false;
 
   constructor(
     private usersService: UsersService
@@ -24,22 +25,34 @@ export class UsersComponent implements OnInit {
   findUsers() {
     this.usersService.findUsers()
       .subscribe(
-        users => this.usersList = <Array<User>> users,
+        users => {
+          this.usersList = <Array<User>>users;
+          this.removeAllErrorsLabels();
+        },
         () => this.findUsersErrorOccurred = true
       );
   }
 
-  deleteUserById(userId: string) {
+  handleUserDelete(userId: string) {
+    this.openDeleteConfirmationPopup();
+    this.deleteUserById(userId);
+  }
+
+  private openDeleteConfirmationPopup(): void {
+    this.isDeleteConfirmationPopupOpened = true;
+  }
+
+  private deleteUserById(userId: string) {
     this.usersService.deleteUser(userId)
       .subscribe(
         () => {
-          this.removeAllErrors();
+          this.removeAllErrorsLabels();
         },
         () => this.removeUserErrorOccurred = true
       );
   }
 
-  private removeAllErrors(): void {
+  private removeAllErrorsLabels(): void {
     this.removeUserErrorOccurred = false;
     this.findUsersErrorOccurred = false;
   }

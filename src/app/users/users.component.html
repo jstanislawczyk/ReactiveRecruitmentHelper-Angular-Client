@@ -47,8 +47,14 @@
       </div>
       <div class="users__user-control-buttons">
         <button class="users__button">Activate user</button>
-        <button (click)="deleteUserById(user._id)" class="users__button">Remove user</button>
+        <button (click)="handleUserDelete(user._id)" class="users__button">Remove user</button>
       </div>
+    </div>
+  </div>
+
+  <div *ngIf="isDeleteConfirmationPopupOpened" class="users__overlay">
+    <div class="users__delete-confirmation-popup">
+
     </div>
   </div>
 </section>

@@ -8,6 +8,10 @@
   align-items: center;
   width: 80%;
 
+  &__overlay {
+    @include black-overlay();
+  }
+
   &__title {
     margin-top: 40px;
     font-weight: 500;
