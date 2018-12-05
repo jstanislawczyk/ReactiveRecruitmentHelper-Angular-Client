@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   private removeUserErrorOccurred = false;
   private findUsersErrorOccurred = false;
   private isDeleteConfirmationPopupOpened = false;
+  private userIdForDeleteConfirmation: string;
 
   constructor(
     private usersService: UsersService
@@ -35,11 +36,15 @@ export class UsersComponent implements OnInit {
 
   handleUserDelete(userId: string) {
     this.openDeleteConfirmationPopup();
-    this.deleteUserById(userId);
+    this.userIdForDeleteConfirmation = userId;
   }
 
   private openDeleteConfirmationPopup(): void {
     this.isDeleteConfirmationPopupOpened = true;
+  }
+
+  private closeDeleteConfirmationPopup(): void {
+    this.isDeleteConfirmationPopupOpened = false;
   }
 
   private deleteUserById(userId: string) {
