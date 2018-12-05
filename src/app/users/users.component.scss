@@ -8,10 +8,6 @@
   align-items: center;
   width: 80%;
 
-  &__overlay {
-    @include black-overlay();
-  }
-
   &__title {
     margin-top: 40px;
     font-weight: 500;
@@ -86,7 +82,7 @@
   &__button {
     width: 105px;
     height: 40px;
-    margin-right: 15px;
+    margin-right: 10px;
     border: none;
     background-color: $dark-grey;
     color: #fff;
@@ -94,6 +90,46 @@
 
     &:hover {
       color: $pear-green;
+    }
+  }
+
+  &__overlay {
+    @include black-overlay();
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__delete-confirmation {
+    &-popup {
+      width: 90%;
+      height: 250px;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      text-align: center;
+    }
+
+    &-title {
+      margin-top: 30px;
+      font-weight: normal;
+    }
+
+    &-info {
+      width: 80%;
+    }
+
+    &-buttons {
+      width: 220px;
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+
+      & .users__button {
+        margin-right: 0;
+      }
     }
   }
 }
@@ -150,6 +186,22 @@
     &__button {
       margin-top: 20px;
       margin-right: 0;
+    }
+
+    &__delete-confirmation {
+      &-popup {
+        height: 300px;
+      }
+
+      &-title {
+        margin-top: 40px;
+        font-size: 2rem;
+      }
+
+      &-buttons {
+        width: 260px;
+        margin-bottom: 30px;
+      }
     }
   }
 }
