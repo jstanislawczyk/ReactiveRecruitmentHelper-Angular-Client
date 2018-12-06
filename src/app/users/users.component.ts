@@ -39,22 +39,24 @@ export class UsersComponent implements OnInit {
     this.userIdForDeleteConfirmation = userId;
   }
 
+
+  private deleteUserById(userId: string) {
+    this.usersService.deleteUser(userId)
+      .subscribe(
+        () => {
+          this.findUsers();
+          this.closeDeleteConfirmationPopup();
+        },
+        () => this.removeUserErrorOccurred = true
+      );
+  }
+
   private openDeleteConfirmationPopup(): void {
     this.isDeleteConfirmationPopupOpened = true;
   }
 
   private closeDeleteConfirmationPopup(): void {
     this.isDeleteConfirmationPopupOpened = false;
-  }
-
-  private deleteUserById(userId: string) {
-    this.usersService.deleteUser(userId)
-      .subscribe(
-        () => {
-          this.removeAllErrorsLabels();
-        },
-        () => this.removeUserErrorOccurred = true
-      );
   }
 
   private removeAllErrorsLabels(): void {
