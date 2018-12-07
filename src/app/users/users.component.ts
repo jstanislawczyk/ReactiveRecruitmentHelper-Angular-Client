@@ -10,10 +10,10 @@ import { User } from '../classes/User';
 export class UsersComponent implements OnInit {
 
   usersList: Array<User>;
-  private removeUserErrorOccurred = false;
-  private findUsersErrorOccurred = false;
-  private isDeleteConfirmationPopupOpened = false;
-  private userIdForDeleteConfirmation: string;
+  removeUserErrorOccurred = false;
+  findUsersErrorOccurred = false;
+  isDeleteConfirmationPopupOpened = false;
+  userIdForDeleteConfirmation: string;
 
   constructor(
     private usersService: UsersService
