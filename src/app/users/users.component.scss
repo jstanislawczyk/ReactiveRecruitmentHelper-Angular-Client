@@ -16,18 +16,18 @@
   &__control-panel {
     width: 100%;
     max-width: 400px;
-  }
 
-  &__control-panel-buttons {
-    max-width: 450px;
-    display: flex;
-    flex-direction: column;
-  }
+    &-buttons {
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+    }
 
-  &__control-panel-button {
-    margin: 20px 0;
-    border: 0;
-    @include grey-button();
+    &-button {
+      margin: 20px 0;
+      border: 0;
+      @include grey-button();
+    }
   }
 
   &__error-message {
@@ -93,6 +93,19 @@
     }
   }
 
+  &__size {
+    &-button {
+      border: none;
+      background: none;
+      color: #000;
+
+      &:hover {
+        color: $pear-green;
+        cursor: pointer;
+      }
+    }
+  }
+
   &__overlay {
     @include black-overlay();
     display: flex;
@@ -142,16 +155,16 @@
 
     &__control-panel {
       max-width: 600px;
-    }
 
-    &__control-panel-buttons {
-      flex-direction: row;
-      justify-content: space-between;
-    }
+      &-buttons {
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
-    &__control-panel-button {
-      margin: 30px 0;
-      align-self: flex-start;
+      &-button {
+        margin: 30px 0;
+        align-self: flex-start;
+      }
     }
 
     &__user-label {
@@ -214,10 +227,10 @@
 
     &__control-panel {
       max-width: 1500px;
-    }
 
-    &__control-panel-button {
-      margin-bottom: 60px;
+      &-button {
+        margin-bottom: 60px;
+      }
     }
 
     &__user-link {
