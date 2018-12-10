@@ -62,7 +62,8 @@
         </div>
       </div>
       <div class="users__user-control-buttons">
-        <button class="users__button">Activate user</button>
+        <button *ngIf="!user.active" (click)="handleUserActivationStatus(user._id)" class="users__button">Activate user</button>
+        <button *ngIf="user.active" (click)="handleUserActivationStatus(user._id)" class="users__button">Dectivate user</button>
         <button (click)="handleUserDelete(user._id)" class="users__button">Remove user</button>
       </div>
     </div>
