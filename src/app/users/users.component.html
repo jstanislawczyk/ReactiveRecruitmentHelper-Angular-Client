@@ -9,9 +9,9 @@
 
     <div class="users__size-display">
       <p class="users__size-info">Users displayed</p>
-      <button class="users__size-button">10</button>
-      <button class="users__size-button">20</button>
-      <button class="users__size-button">30</button>
+      <button (click)="changeUsersListSize(10)" [ngClass]="{'users__size-button--checked': usersListSize == 10 }" class="users__size-button">10</button>
+      <button (click)="changeUsersListSize(20)" [ngClass]="{'users__size-button--checked': usersListSize == 20 }" class="users__size-button">20</button>
+      <button (click)="changeUsersListSize(30)" [ngClass]="{'users__size-button--checked': usersListSize == 30 }" class="users__size-button">30</button>
     </div>
   </div>
 

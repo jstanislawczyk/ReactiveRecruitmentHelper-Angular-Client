@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   findUsersErrorOccurred = false;
   isDeleteConfirmationPopupOpened = false;
   userIdForDeleteConfirmation: string;
+  usersListSize = 10;
 
   constructor(
     private usersService: UsersService
@@ -21,9 +22,10 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.findUsers();
+    this.initUsersListSize();
   }
 
-  findUsers() {
+  findUsers(): void {
     this.usersService.findUsers()
       .subscribe(
         users => {
@@ -34,13 +36,29 @@ export class UsersComponent implements OnInit {
       );
   }
 
-  handleUserDelete(userId: string) {
+  initUsersListSize(): void {
+    const localStorageUsersListSize = Number(localStorage.getItem("usersListSize"));
+
+    if(localStorageUsersListSize !== 0) {
+      this.usersListSize = localStorageUsersListSize;
+    }
+  }
+
+  changeUsersListSize(usersListSize: number): void {
+    this.setUsersListSize(usersListSize);
+  }
+
+  private setUsersListSize(usersListSize: number): void {
+    this.usersListSize = usersListSize;
+    localStorage.setItem("usersListSize", String(usersListSize));
+  }
+
+  handleUserDelete(userId: string): void {
     this.openDeleteConfirmationPopup();
     this.userIdForDeleteConfirmation = userId;
   }
 
-
-  private deleteUserById(userId: string) {
+  deleteUserById(userId: string): void {
     this.usersService.deleteUser(userId)
       .subscribe(
         () => {
