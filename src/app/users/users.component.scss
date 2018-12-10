@@ -95,13 +95,21 @@
 
   &__size {
     &-button {
+      margin-right: 10px;
       border: none;
       background: none;
       color: #000;
+      border: 2px solid #000;
 
+      &--checked,
       &:hover {
         color: $pear-green;
+        border: 2px solid $pear-green;
         cursor: pointer;
+      }
+
+      &:last-child { 
+        margin-right: 0;
       }
     }
   }
@@ -154,7 +162,9 @@
     }
 
     &__control-panel {
-      max-width: 600px;
+      max-width: 600px;   
+      display: flex;
+      flex-direction: column;
 
       &-buttons {
         flex-direction: row;
@@ -227,6 +237,12 @@
 
     &__control-panel {
       max-width: 1500px;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &-buttons {
+        width: 450px;
+      }
 
       &-button {
         margin-bottom: 60px;
