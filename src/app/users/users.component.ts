@@ -29,7 +29,7 @@ export class UsersComponent implements OnInit {
     this.usersService.findUsers()
       .subscribe(
         users => {
-          this.usersList = <Array<User>>users;
+          this.usersList = <Array<User>> users;
           this.removeAllErrorsLabels();
         },
         () => this.findUsersErrorOccurred = true
