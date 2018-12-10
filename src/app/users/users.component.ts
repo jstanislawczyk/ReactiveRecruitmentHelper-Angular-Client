@@ -69,6 +69,10 @@ export class UsersComponent implements OnInit {
       );
   }
 
+  handleUserActivationStatus(userId: string): void {
+    console.log(userId)
+  }
+
   private openDeleteConfirmationPopup(): void {
     this.isDeleteConfirmationPopupOpened = true;
   }
