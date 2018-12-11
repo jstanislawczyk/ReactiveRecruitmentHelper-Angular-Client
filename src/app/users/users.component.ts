@@ -10,11 +10,18 @@ import { User } from '../classes/User';
 export class UsersComponent implements OnInit {
 
   usersList: Array<User>;
+  usersListSize = 10;
+
   removeUserErrorOccurred = false;
   findUsersErrorOccurred = false;
+  updateUserActiveStatusErrorOccurred = false;
+
   isDeleteConfirmationPopupOpened = false;
+  isActivateUserPopupOpened = false;
+  isDeactivateUserPopupOpened = false;
+
   userIdForDeleteConfirmation: string;
-  usersListSize = 10;
+  userIdForUpdateActiveStatus: string;
 
   constructor(
     private usersService: UsersService
@@ -69,8 +76,29 @@ export class UsersComponent implements OnInit {
       );
   }
 
-  handleUserActivationStatus(userId: string): void {
-    console.log(userId)
+  handleUserActivationStatusUpdate(userId: string, userIsActive: boolean): void {
+    if(userIsActive) {
+      this.isDeactivateUserPopupOpened = true;
+    } else {
+      this.isActivateUserPopupOpened = true;
+    }
+
+    this.userIdForUpdateActiveStatus = userId;
+  }
+
+  updateUserActivationStatus(updatedActiveStatus: boolean): void {
+    this.usersService.updateUserActiveStatus(this.userIdForUpdateActiveStatus, updatedActiveStatus)
+      .subscribe(
+        () => {
+          this.findUsers();
+          if(updatedActiveStatus) {
+            this.closeActivateUserConfirmationPopup();
+          } else {
+            this.closeDeactivateUserConfirmationPopup();
+          }
+        },
+        () => this.updateUserActiveStatusErrorOccurred = true
+      );
   }
 
   private openDeleteConfirmationPopup(): void {
@@ -79,6 +107,14 @@ export class UsersComponent implements OnInit {
 
   private closeDeleteConfirmationPopup(): void {
     this.isDeleteConfirmationPopupOpened = false;
+  }
+
+  private closeDeactivateUserConfirmationPopup(): void {
+    this.isDeactivateUserPopupOpened = false;
+  }
+
+  private closeActivateUserConfirmationPopup(): void {
+    this.isActivateUserPopupOpened = false;
   }
 
   private removeAllErrorsLabels(): void {
