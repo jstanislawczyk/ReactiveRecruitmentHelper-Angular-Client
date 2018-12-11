@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class UsersService {
 
   private usersServiceUri = 'http://localhost:8090/users';
+  private header = this.createHeader();
 
   constructor(
     private http: HttpClient,
@@ -16,17 +17,20 @@ export class UsersService {
   ) { }
 
   findUsers(): Observable<Object> {
-    const header = this.createHeader();
-
     return this.http
-      .get(this.usersServiceUri, header);
+      .get(this.usersServiceUri, this.header);
   }
 
   deleteUser(userId: string): Observable<Object> {
-    const header = this.createHeader();
+    return this.http
+      .delete(`${this.usersServiceUri}/${userId}`, this.header);
+  }
+
+  updateUserActiveStatus(userId: string, updatedActiveStatus: boolean): Observable<Object> {
+    const jsonWithActiveStatus = `{"active": "${updatedActiveStatus}"}`;
 
     return this.http
-      .delete(`${this.usersServiceUri}/${userId}`, header);
+      .patch(`${this.usersServiceUri}/${userId}`, jsonWithActiveStatus, this.header);
   }
 
   private createHeader(): Object {
