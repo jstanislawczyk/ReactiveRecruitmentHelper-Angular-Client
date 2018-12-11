@@ -18,6 +18,7 @@
   <div class="users__errors">
     <p *ngIf="removeUserErrorOccurred" class="users__error-message">Couldn't remove user. Error occurred</p>
     <p *ngIf="findUsersErrorOccurred" class="users__error-message">Couldn't find users. Error occurred</p>
+    <p *ngIf="updateUserActiveStatusErrorOccurred" class="users__error-message">Couldn't update status. Error occurred</p>
   </div>
 
   <div class="users__list">
@@ -62,20 +63,42 @@
         </div>
       </div>
       <div class="users__user-control-buttons">
-        <button *ngIf="!user.active" (click)="handleUserActivationStatus(user._id)" class="users__button">Activate user</button>
-        <button *ngIf="user.active" (click)="handleUserActivationStatus(user._id)" class="users__button">Dectivate user</button>
+        <button *ngIf="!user.active" (click)="handleUserActivationStatusUpdate(user._id, user.active)" class="users__button">Activate user</button>
+        <button *ngIf="user.active" (click)="handleUserActivationStatusUpdate(user._id, user.active)" class="users__button">Dectivate user</button>
         <button (click)="handleUserDelete(user._id)" class="users__button">Remove user</button>
       </div>
     </div>
   </div>
 
   <div *ngIf="isDeleteConfirmationPopupOpened" class="users__overlay">
-    <div class="users__delete-confirmation-popup">
-      <h2 class="users__delete-confirmation-title">Delete user confirmation</h2>
-      <p class="users__delete-confirmation-info">Do you want to delete user? It can't be undone</p>
-      <div class="users__delete-confirmation-buttons">
+    <div class="users__confirmation-popup">
+      <h2 class="users__confirmation-title">Delete user confirmation</h2>
+      <p class="users__confirmation-info">Do you want to delete user? It can't be undone</p>
+      <div class="users__confirmation-buttons">
         <button (click)="closeDeleteConfirmationPopup()" class="users__button">Cancel</button>
         <button (click)="deleteUserById(userIdForDeleteConfirmation)" class="users__button">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isActivateUserPopupOpened" class="users__overlay">
+    <div class="users__confirmation-popup">
+      <h2 class="users__confirmation-title">Activate user confirmation</h2>
+      <p class="users__confirmation-info">Do you want to activate user?</p>
+      <div class="users__confirmation-buttons">
+        <button (click)="closeActivateUserConfirmationPopup()" class="users__button">Cancel</button>
+        <button (click)="updateUserActivationStatus(true)" class="users__button">Activate</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isDeactivateUserPopupOpened" class="users__overlay">
+    <div class="users__confirmation-popup">
+      <h2 class="users__confirmation-title">Deactivate user confirmation</h2>
+      <p class="users__confirmation-info">Do you want to deactivate user?</p>
+      <div class="users__confirmation-buttons">
+        <button (click)="closeDeactivateUserConfirmationPopup()" class="users__button">Cancel</button>
+        <button (click)="updateUserActivationStatus(false)" class="users__button">Deactivate</button>
       </div>
     </div>
   </div>
