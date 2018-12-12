@@ -157,6 +157,31 @@
       }
     }
   }
+
+  &__pagination {
+    margin-bottom: 40px;
+  }
+
+  &__page-number {
+    background: none;
+    margin: 5px 10px;
+    border: none;
+    font-size: 1.1rem;
+    color: #000;
+
+    &:hover {
+      color: $pear-green;
+      cursor: pointer;
+    }
+
+    &:last-child { 
+      margin-right: 0;
+    }
+
+    &--selected {
+      color: $pear-green;
+    }
+  }
 }
 
 @media (min-width: $tablet) {
@@ -229,6 +254,10 @@
         width: 260px;
         margin-bottom: 30px;
       }
+    }
+
+    &__pagination {
+      margin-bottom: 50px;
     }
   }
 }
