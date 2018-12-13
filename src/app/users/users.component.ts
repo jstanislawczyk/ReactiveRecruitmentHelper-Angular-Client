@@ -11,6 +11,7 @@ export class UsersComponent implements OnInit {
 
   usersList: Array<User>;
   usersListSize = 10;
+  usersPageNumber = 0;
 
   removeUserErrorOccurred = false;
   findUsersErrorOccurred = false;
@@ -33,7 +34,7 @@ export class UsersComponent implements OnInit {
   }
 
   findUsers(): void {
-    this.usersService.findUsers()
+    this.usersService.findUsers(this.usersPageNumber, this.usersListSize)
       .subscribe(
         users => {
           this.usersList = <Array<User>> users;

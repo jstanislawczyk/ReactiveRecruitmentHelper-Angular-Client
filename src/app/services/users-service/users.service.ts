@@ -16,9 +16,9 @@ export class UsersService {
     private authenticationService: AuthenticationService
   ) { }
 
-  findUsers(): Observable<Object> {
+  findUsers(pageNumber: number, pageSize: number): Observable<Object> {
     return this.http
-      .get(this.usersServiceUri, this.header);
+      .get(this.createUsersPaginationUriWithParams(pageNumber, pageSize), this.header);
   }
 
   deleteUser(userId: string): Observable<Object> {
@@ -41,5 +41,9 @@ export class UsersService {
         'Authorization': `Basic ${this.authenticationService.userAuthenticationToken}`
       })
     };
+  }
+
+  private createUsersPaginationUriWithParams(pageSize, pageNumber) {
+    return `${this.usersServiceUri}?page=${pageNumber}&size=${pageSize}`;
   }
 }
