@@ -43,7 +43,7 @@ export class UsersService {
     };
   }
 
-  private createUsersPaginationUriWithParams(pageSize, pageNumber) {
+  private createUsersPaginationUriWithParams(pageNumber, pageSize) {
     return `${this.usersServiceUri}?page=${pageNumber}&size=${pageSize}`;
   }
 }
