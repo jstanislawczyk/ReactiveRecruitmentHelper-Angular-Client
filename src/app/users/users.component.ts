@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users-service/users.service';
 import { User } from '../classes/User';
+import { UserPage } from '../classes/UserPage';
 
 @Component({
   selector: 'app-users',
@@ -9,7 +10,7 @@ import { User } from '../classes/User';
 })
 export class UsersComponent implements OnInit {
 
-  usersList: Array<User>;
+  usersList: UserPage;
   usersListSize = 10;
   usersPageNumber = 0;
 
@@ -37,7 +38,7 @@ export class UsersComponent implements OnInit {
     this.usersService.findUsers(this.usersPageNumber, this.usersListSize)
       .subscribe(
         users => {
-          this.usersList = <Array<User>> users;
+          this.usersList = <UserPage> users;
           this.removeAllErrorsLabels();
         },
         () => this.findUsersErrorOccurred = true
