@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users-service/users.service';
 import { UserPage } from '../classes/UserPage';
+import { User } from '../classes/User';
 
 @Component({
   selector: 'app-users',
@@ -9,9 +10,10 @@ import { UserPage } from '../classes/UserPage';
 })
 export class UsersComponent implements OnInit {
 
-  usersList: UserPage;
+  usersList: Array<User>;
   usersListSize = 10;
   usersPageNumber = 0;
+  usersTotalPagesNumber = 1;
 
   removeUserErrorOccurred = false;
   findUsersErrorOccurred = false;
@@ -34,10 +36,13 @@ export class UsersComponent implements OnInit {
   }
 
   findUsers(): void {
+    let usersPage: UserPage;
+
     this.usersService.findUsers(this.usersPageNumber, this.usersListSize)
       .subscribe(
         users => {
-          this.usersList = <UserPage> users;
+          usersPage = <UserPage> users;
+          this.setupUsersPageData(usersPage);
           this.removeAllErrorsLabels();
         },
         () => this.findUsersErrorOccurred = true
@@ -121,5 +126,10 @@ export class UsersComponent implements OnInit {
   private removeAllErrorsLabels(): void {
     this.removeUserErrorOccurred = false;
     this.findUsersErrorOccurred = false;
+  }
+
+  private setupUsersPageData(usersPage: UserPage): void {
+    this.usersList = usersPage.pageContent;
+    this.usersTotalPagesNumber = usersPage.totalPagesNumber;
   }
 }
