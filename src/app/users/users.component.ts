@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users-service/users.service';
-import { User } from '../classes/User';
 import { UserPage } from '../classes/UserPage';
 
 @Component({
@@ -46,9 +45,9 @@ export class UsersComponent implements OnInit {
   }
 
   initUsersListSize(): void {
-    const localStorageUsersListSize = Number(localStorage.getItem("usersListSize"));
+    const localStorageUsersListSize = Number(localStorage.getItem('usersListSize'));
 
-    if(localStorageUsersListSize !== 0) {
+    if (localStorageUsersListSize !== 0) {
       this.usersListSize = localStorageUsersListSize;
     }
   }
@@ -59,7 +58,7 @@ export class UsersComponent implements OnInit {
 
   private setUsersListSize(usersListSize: number): void {
     this.usersListSize = usersListSize;
-    localStorage.setItem("usersListSize", String(usersListSize));
+    localStorage.setItem('usersListSize', String(usersListSize));
   }
 
   handleUserDelete(userId: string): void {
@@ -79,7 +78,7 @@ export class UsersComponent implements OnInit {
   }
 
   handleUserActivationStatusUpdate(userId: string, userIsActive: boolean): void {
-    if(userIsActive) {
+    if (userIsActive) {
       this.isDeactivateUserPopupOpened = true;
     } else {
       this.isActivateUserPopupOpened = true;
@@ -93,7 +92,7 @@ export class UsersComponent implements OnInit {
       .subscribe(
         () => {
           this.findUsers();
-          if(updatedActiveStatus) {
+          if (updatedActiveStatus) {
             this.closeActivateUserConfirmationPopup();
           } else {
             this.closeDeactivateUserConfirmationPopup();
