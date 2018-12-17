@@ -9,9 +9,9 @@
 
     <div class="users__size-display">
       <p class="users__size-info">Users displayed</p>
-      <button (click)="changeUsersListSize(10)" [ngClass]="{'users__size-button--checked': usersListSize == 10 }" class="users__size-button">10</button>
-      <button (click)="changeUsersListSize(20)" [ngClass]="{'users__size-button--checked': usersListSize == 20 }" class="users__size-button">20</button>
-      <button (click)="changeUsersListSize(30)" [ngClass]="{'users__size-button--checked': usersListSize == 30 }" class="users__size-button">30</button>
+      <button (click)="changeUsersListSize(10)" [ngClass]="{'users__size-button--checked': usersListSize === 10 }" class="users__size-button">10</button>
+      <button (click)="changeUsersListSize(20)" [ngClass]="{'users__size-button--checked': usersListSize === 20 }" class="users__size-button">20</button>
+      <button (click)="changeUsersListSize(30)" [ngClass]="{'users__size-button--checked': usersListSize === 30 }" class="users__size-button">30</button>
     </div>
   </div>
 
@@ -64,15 +64,15 @@
       </div>
       <div class="users__user-control-buttons">
         <button *ngIf="!user.active" (click)="handleUserActivationStatusUpdate(user._id, user.active)" class="users__button">Activate user</button>
-        <button *ngIf="user.active" (click)="handleUserActivationStatusUpdate(user._id, user.active)" class="users__button">Dectivate user</button>
+        <button *ngIf="user.active" (click)="handleUserActivationStatusUpdate(user._id, user.active)" class="users__button">Deactivate user</button>
         <button (click)="handleUserDelete(user._id)" class="users__button">Remove user</button>
       </div>
     </div>
   </div>
 
   <div class="users__pagination">
-    <button *ngFor="let pageNumber of usersTotalPagesNumber" (click)="changePage(pageNumber)" 
-      [ngClass]="{'users__page-number--checked': currentUsersPageNumber == pageNumber }" class="users__page-number">{{ pageNumber + 1 }}
+    <button *ngFor="let pageNumber of usersTotalPagesNumber" (click)="changePage(pageNumber)"
+      [ngClass]="{'users__page-number--selected': currentUsersPageNumber === pageNumber }" class="users__page-number">{{ pageNumber + 1 }}
     </button>
   </div>
 
