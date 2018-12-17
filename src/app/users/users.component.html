@@ -71,7 +71,9 @@
   </div>
 
   <div class="users__pagination">
-    <button class="users__page-number">1</button>
+    <button *ngFor="let pageNumber of usersTotalPagesNumber" (click)="changePage(pageNumber)" 
+      [ngClass]="{'users__page-number--checked': currentUsersPageNumber == pageNumber }" class="users__page-number">{{ pageNumber + 1 }}
+    </button>
   </div>
 
   <div *ngIf="isDeleteConfirmationPopupOpened" class="users__overlay">

@@ -12,8 +12,8 @@ export class UsersComponent implements OnInit {
 
   usersList: Array<User>;
   usersListSize = 10;
-  usersPageNumber = 0;
-  usersTotalPagesNumber = 1;
+  currentUsersPageNumber = 0;
+  usersTotalPagesNumber: Array<number>;
 
   removeUserErrorOccurred = false;
   findUsersErrorOccurred = false;
@@ -33,20 +33,7 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.findUsers();
     this.initUsersListSize();
-  }
-
-  findUsers(): void {
-    let usersPage: UserPage;
-
-    this.usersService.findUsers(this.usersPageNumber, this.usersListSize)
-      .subscribe(
-        users => {
-          usersPage = <UserPage> users;
-          this.setupUsersPageData(usersPage);
-          this.removeAllErrorsLabels();
-        },
-        () => this.findUsersErrorOccurred = true
-      );
+    this.initCurrentPageNumber();
   }
 
   initUsersListSize(): void {
@@ -57,11 +44,35 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  changeUsersListSize(usersListSize: number): void {
-    this.setUsersListSize(usersListSize);
+  initCurrentPageNumber(): void {
+    const localStorageCurrentUsersPage = Number(localStorage.getItem('currentUsersPageNumber'));
+
+    if (localStorageCurrentUsersPage !== 0) {
+      this.currentUsersPageNumber = localStorageCurrentUsersPage;
+    }
+  }
+  
+  changePage(choosenPageNumber: number): void {
+    this.currentUsersPageNumber = choosenPageNumber;
+    localStorage.setItem('currentUsersPageNumber', String(choosenPageNumber));
+    this.findUsers();
   }
 
-  private setUsersListSize(usersListSize: number): void {
+  findUsers(): void {
+    let usersPage: UserPage;
+
+    this.usersService.findUsers(this.currentUsersPageNumber, this.usersListSize)
+      .subscribe(
+        users => {
+          usersPage = <UserPage> users;
+          this.setupUsersPageData(usersPage);
+          this.removeAllErrorsLabels();
+        },
+        () => this.findUsersErrorOccurred = true
+      );
+  }
+
+  changeUsersListSize(usersListSize: number): void {
     this.usersListSize = usersListSize;
     localStorage.setItem('usersListSize', String(usersListSize));
   }
@@ -97,6 +108,7 @@ export class UsersComponent implements OnInit {
       .subscribe(
         () => {
           this.findUsers();
+
           if (updatedActiveStatus) {
             this.closeActivateUserConfirmationPopup();
           } else {
@@ -130,6 +142,6 @@ export class UsersComponent implements OnInit {
 
   private setupUsersPageData(usersPage: UserPage): void {
     this.usersList = usersPage.pageContent;
-    this.usersTotalPagesNumber = usersPage.totalPagesNumber;
+    this.usersTotalPagesNumber = Array(usersPage.totalPagesNumber).fill(0).map((x,i)=>i);
   }
 }
