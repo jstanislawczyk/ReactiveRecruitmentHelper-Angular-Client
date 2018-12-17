@@ -17,6 +17,10 @@ class User {
     return this._lastName;
   }
 
+  get active(): string {
+    return this._active;
+  }
+
   get roles(): Array<Role> {
     return this._roles;
   }
@@ -26,14 +30,16 @@ class User {
   private readonly _lastName: string;
   private readonly _email: string;
   private readonly _password: string;
+  private readonly _active: string;
   private readonly _roles: Array<Role> = [];
 
-  constructor(id: string, firstName: string, lastName: string, email: string, password: string, roles: Array<Role>) {
+  constructor(id: string, firstName: string, lastName: string, email: string, password: string, active: string, roles: Array<Role>) {
       this.__id = id;
       this._firstName = firstName;
       this._lastName = lastName;
       this._email = email;
       this._password = password;
+      this._active = active;
       this._roles = roles;
   }
 }
