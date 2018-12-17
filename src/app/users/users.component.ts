@@ -51,10 +51,10 @@ export class UsersComponent implements OnInit {
       this.currentUsersPageNumber = localStorageCurrentUsersPage;
     }
   }
-  
-  changePage(choosenPageNumber: number): void {
-    this.currentUsersPageNumber = choosenPageNumber;
-    localStorage.setItem('currentUsersPageNumber', String(choosenPageNumber));
+
+  changePage(chosenPageNumber: number): void {
+    this.currentUsersPageNumber = chosenPageNumber;
+    localStorage.setItem('currentUsersPageNumber', String(chosenPageNumber));
     this.findUsers();
   }
 
@@ -142,6 +142,6 @@ export class UsersComponent implements OnInit {
 
   private setupUsersPageData(usersPage: UserPage): void {
     this.usersList = usersPage.pageContent;
-    this.usersTotalPagesNumber = Array(usersPage.totalPagesNumber).fill(0).map((x,i)=>i);
+    this.usersTotalPagesNumber = Array(usersPage.totalPagesNumber).fill(0).map((x, i) => i);
   }
 }
