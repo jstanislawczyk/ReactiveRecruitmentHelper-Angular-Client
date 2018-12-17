@@ -17,7 +17,7 @@ class User {
     return this._lastName;
   }
 
-  get active(): string {
+  get active(): boolean {
     return this._active;
   }
 
@@ -30,10 +30,10 @@ class User {
   private readonly _lastName: string;
   private readonly _email: string;
   private readonly _password: string;
-  private readonly _active: string;
+  private readonly _active: boolean;
   private readonly _roles: Array<Role> = [];
 
-  constructor(id: string, firstName: string, lastName: string, email: string, password: string, active: string, roles: Array<Role>) {
+  constructor(id: string, firstName: string, lastName: string, email: string, password: string, active: boolean, roles: Array<Role>) {
       this.__id = id;
       this._firstName = firstName;
       this._lastName = lastName;

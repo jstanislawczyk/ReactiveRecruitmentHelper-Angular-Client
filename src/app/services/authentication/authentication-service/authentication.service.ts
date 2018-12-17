@@ -49,7 +49,7 @@ export class AuthenticationService {
   }
 
   setupUserAuthenticationToken(email: string, password: string): void {
-    this.userAuthenticationToken = btoa(`${email}:${password}`); 
+    this.userAuthenticationToken = btoa(`${email}:${password}`);
     localStorage.setItem('userAuthenticationToken', this.userAuthenticationToken);
   }
 
