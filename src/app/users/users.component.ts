@@ -32,6 +32,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.initUsersListSize();
+    this.initCurrentUsersPageNumber();
     this.findUsers();
   }
 
@@ -43,8 +44,17 @@ export class UsersComponent implements OnInit {
     }
   }
 
+  initCurrentUsersPageNumber(): void {
+    const localCurrentUsersPageNumber = Number(localStorage.getItem('currentUsersPageNumber'));
+
+    if (localCurrentUsersPageNumber !== 0) {
+      this.currentUsersPageNumber = localCurrentUsersPageNumber;
+    }
+  }
+
   changePage(chosenPageNumber: number): void {
     this.currentUsersPageNumber = chosenPageNumber;
+    localStorage.setItem('currentUsersPageNumber', String(chosenPageNumber));
     this.findUsers();
   }
 
