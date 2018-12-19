@@ -12,6 +12,13 @@ This is simple Angular client for my reactive [app](https://github.com/xenonso/R
 
 ![image](https://user-images.githubusercontent.com/31374669/48158300-7ba1a200-e2d2-11e8-9846-5afa90ddfb90.png)
 
+## Quick start
+
+* Install git bash (Only for Windows)
+* Install node.js with npm
+* Run `build.sh` script before first start
+* Run `start.sh` script
+
 ## Development server
 
 Run `ng serve -o` for a dev server. Navigate to `http://localhost:4200/`.
