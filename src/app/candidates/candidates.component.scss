@@ -2,26 +2,132 @@
 @import '../../styles-mixins.scss';
 
 .candidates {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 
-    &__title {
-        margin-top: 40px;
-        font-weight: 500;
+  &__title {
+    margin: 40px auto;
+    font-weight: 500;
+  }
+
+  &__dashboard {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  &__control-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 2px solid $dark-grey;
+  }
+
+  &__search-title {
+    margin: 10px auto;
+    padding: 0;
+    font-weight: 500;
+  }
+
+  &__input-labels {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+  }
+
+  &__input-label {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+    text-align: left;
+
+    &:last-child {
+      margin-bottom: 0;
     }
+  }
+
+  &__input-title {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  &__input-field {
+    height: 30px;
+    width: 250px;
+    @include form-input;
+  }
+
+  &__input-button {
+    margin: 10px auto;
+    @include grey-button;
+  }
 }
 
 @media (min-width: $tablet) {
-    .candidates {
-        &__title {
-            font-size: 2rem;
-        }    
+  .candidates {
+    &__title {
+      margin: 50px auto;
+      font-size: 2rem;
     }
+
+    &__dashboard {
+      max-width: 600px;
+    }
+
+    &__search-title {
+      margin: 25px auto;
+      font-size: 1.7rem;
+    }
+
+    &__input-field {
+      height: 40px;
+      width: 270px;
+      font-size: 1rem;
+    }
+
+    &__input-button {
+      margin: 20px auto;
+      @include grey-button;
+    }
+  }
 }
 
 @media (min-width: $desktop) {
-    .candidates {
-        &__title {
-            font-size: 2.5rem;
-        } 
+  .candidates {
+    &__title {
+      font-size: 2.5rem;
     }
+
+    &__dashboard {
+      max-width: 1200px;
+    }
+
+    &__control-panel {
+      align-items: flex-start;
+    }
+
+    &__search-title {
+      margin-left: 45px;
+      font-size: 1.8rem;
+    }
+
+    &__input-labels {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 80%;
+    }
+
+    &__input-label {
+      margin: 20px 30px;
+    }
+
+    &__input-field {
+      width: 300px;
+      font-size: 1.2rem;
+    }
+  }
 }
