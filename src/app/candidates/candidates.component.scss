@@ -60,6 +60,28 @@
     @include form-input;
   }
 
+  &__size-buttons {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+
+  &__size-button {
+    margin-left: 10px;
+    border: 2px solid $dark-grey;
+    background: #fff;
+
+    &:last-child {
+      margin-right: 10px;
+    }
+
+    &--checked,
+    &:hover {
+      color: $pear-green;
+      border: 2px solid $pear-green;
+      cursor: pointer;
+    }
+  }
+
   &__input-button {
     margin: 10px auto;
     @include grey-button;
@@ -144,6 +166,18 @@
 
     &__control-panel {
       align-items: flex-start;
+      position: relative;
+    }
+
+    &__size-buttons {
+      position: absolute;
+      top: 20px;
+      right: 45px;
+      text-align: right;
+    }
+
+    &__size-button:last-child {
+      margin-right: 0;
     }
 
     &__search-title {
