@@ -39,12 +39,12 @@ class UserPage {
     private _totalPagesNumber: number;
 
     constructor(
-        pageContent: Array<User>, 
-        pageNumber: number, 
+        pageContent: Array<User>,
+        pageNumber: number,
         pageSize: number,
-        totalContentSize: number, 
-        lastPage: boolean, 
-        firstPage: boolean, 
+        totalContentSize: number,
+        lastPage: boolean,
+        firstPage: boolean,
         totalPagesNumber: number
     ) {
         this._pageContent = pageContent;
