@@ -9,5 +9,31 @@ export class CandidatesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  pageNumber = 10;
+  pageSize = 0;
+
+  ngOnInit() {
+    this.initPaginationDetails();
+  }
+
+  private initPaginationDetails() {
+    this.initPageNumber();
+    this.initPageSize();
+  }
+
+  private initPageNumber() {
+    const localStorageCandidatesListSize = Number(localStorage.getItem('candidatesListSize'));
+
+    if (localStorageCandidatesListSize !== 0) {
+      this.pageSize = localStorageCandidatesListSize;
+    }
+  }
+
+  private initPageSize() {
+    const localStorageCandidatesPageNumber = Number(localStorage.getItem('candidatesPageNumber'));
+
+    if (localStorageCandidatesPageNumber !== 0) {
+      this.pageNumber = localStorageCandidatesPageNumber;
+    }
+  }
 }
