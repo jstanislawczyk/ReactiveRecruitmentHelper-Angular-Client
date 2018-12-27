@@ -1,0 +1,5 @@
+class Candidate {
+
+}
+
+export { Candidate };
