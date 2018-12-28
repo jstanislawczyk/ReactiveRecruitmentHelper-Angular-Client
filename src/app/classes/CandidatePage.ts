@@ -30,13 +30,13 @@ class CandidatePage {
         return this._totalPagesNumber;
     }
 
-    private _pageContent: Array<Candidate>;
-    private _pageNumber: number;
-    private _pageSize: number;
-    private _totalContentSize: number;
-    private _lastPage: boolean;
-    private _firstPage: boolean;
-    private _totalPagesNumber: number;
+    private readonly _pageContent: Array<Candidate>;
+    private readonly _pageNumber: number;
+    private readonly _pageSize: number;
+    private readonly _totalContentSize: number;
+    private readonly _lastPage: boolean;
+    private readonly _firstPage: boolean;
+    private readonly _totalPagesNumber: number;
 
     constructor(
         pageContent: Array<Candidate>,
