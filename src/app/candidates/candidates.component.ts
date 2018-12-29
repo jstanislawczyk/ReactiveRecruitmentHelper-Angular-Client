@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CandidatesService } from '../services/candidates-service/candidates-service.service';
 
 @Component({
   selector: 'app-candidates',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidatesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private candidatesService: CandidatesService) { }
 
   pageNumber = 10;
   pageSize = 0;
@@ -35,5 +36,13 @@ export class CandidatesComponent implements OnInit {
     if (localStorageCandidatesPageNumber !== 0) {
       this.pageNumber = localStorageCandidatesPageNumber;
     }
+  }
+
+  handleFindCandidatesButtonClick() {
+    this.findCandidates();
+  }
+
+  findCandidates() {
+
   }
 }
