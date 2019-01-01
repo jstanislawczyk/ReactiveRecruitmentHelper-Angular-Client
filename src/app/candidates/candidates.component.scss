@@ -92,9 +92,14 @@
   }
 
   &__candidate {
+    margin-bottom: 20px;
     padding: 25px 25px 10px;
     border: 2px solid $dark-grey;
     text-align: left;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__candidate-field-title {
@@ -108,6 +113,10 @@
   &__candidate-field-value {
     display: block;
     margin: 15px auto;
+  }
+
+  &__candidate-field-list-element {
+    margin-top: 10px;
   }
 
   &__pagination {
@@ -174,6 +183,7 @@
     }
 
     &__candidate {
+      margin-bottom: 30px;
       padding: 35px 35px 20px;
     }
   }
@@ -224,7 +234,7 @@
     }
 
     &__candidate {
-      margin: auto;
+      margin: auto auto 40px;
       padding: 45px 45px 30px;
       max-width: 600px;
     }

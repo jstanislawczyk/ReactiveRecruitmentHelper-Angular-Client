@@ -38,30 +38,42 @@
     </div>
 
     <div class="candidates__list">
-      <div class="candidates__candidate">
+      <div *ngFor="let candidate of candidates;" class="candidates__candidate">
         <div class="candidates__candidate-field">
           <span class="candidates__candidate-field-title">First name: </span>
-          <span class="candidates__candidate-field-value">TEST</span>
+          <span class="candidates__candidate-field-value">{{ candidate.firstName }}</span>
         </div>
 
         <div class="candidates__candidate-field">
           <span class="candidates__candidate-field-title">Last name: </span>
-          <span class="candidates__candidate-field-value">TEST</span>
-        </div>
-
-        <div class="candidates__candidate-field">
-          <span class="candidates__candidate-field-title">Email: </span>
-          <span class="candidates__candidate-field-value">TEST</span>
+          <span class="candidates__candidate-field-value">{{ candidate.lastName }}</span>
         </div>
 
         <div class="candidates__candidate-field">
           <span class="candidates__candidate-field-title">Job: </span>
-          <span class="candidates__candidate-field-value">TEST</span>
+          <span class="candidates__candidate-field-value">{{ candidate.jobPosition }}</span>
         </div>
 
         <div class="candidates__candidate-field">
           <span class="candidates__candidate-field-title">Experience years: </span>
-          <span class="candidates__candidate-field-value">TEST</span>
+          <span class="candidates__candidate-field-value">{{ candidate.experienceYearsInJobPosition }}</span>
+        </div>
+
+        <div class="candidates__candidate-field">
+          <span class="candidates__candidate-field-title">Application date: </span>
+          <span class="candidates__candidate-field-value">{{ candidate.applicationDate }}</span>
+        </div>
+
+        <div class="candidates__candidate-field">
+          <span class="candidates__candidate-field-title">Candidate message: </span>
+          <span class="candidates__candidate-field-value">{{ candidate.candidateMessage }}</span>
+        </div>
+
+        <div class="candidates__candidate-field">
+          <span class="candidates__candidate-field-title">Technologies: </span>
+          <ul>
+            <li *ngFor="let technology of candidate.technologies;" class="candidates__candidate-field-list-element">{{ technology.name }}: {{ technology.knowledgeLevel }}</li>
+          </ul>
         </div>
       </div>
     </div>
