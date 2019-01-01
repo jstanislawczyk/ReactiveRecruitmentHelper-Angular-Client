@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CandidatesService } from '../services/candidates-service/candidates-service.service';
+import { CandidatePage } from '../classes/CandidatePage';
+import { Candidate } from '../classes/Candidate';
 
 @Component({
   selector: 'app-candidates',
@@ -10,11 +12,14 @@ export class CandidatesComponent implements OnInit {
 
   constructor(private candidatesService: CandidatesService) { }
 
-  pageNumber = 10;
-  pageSize = 0;
+  pageNumber = 0;
+  pageSize = 10;
+  totalPagesNumber: Array<number>;
+  candidates: Array<Candidate>;
 
   ngOnInit() {
     this.initPaginationDetails();
+    this.findCandidates();
   }
 
   private initPaginationDetails() {
@@ -43,6 +48,19 @@ export class CandidatesComponent implements OnInit {
   }
 
   findCandidates() {
+    let candidatesPage: CandidatePage;
 
+    this.candidatesService.findCandidates(this.pageNumber, this.pageSize)
+      .subscribe(
+        candidates => {
+          candidatesPage = <CandidatePage> candidates;
+          this.setupCandidatesPageData(candidatesPage);
+        }
+      );
+  }
+
+  private setupCandidatesPageData(candidatesPage: CandidatePage) {
+    this.candidates = candidatesPage.pageContent;
+    this.totalPagesNumber = Array(candidatesPage.totalPagesNumber).fill(0).map((x, i) => i);
   }
 }
