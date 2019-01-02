@@ -28,7 +28,7 @@ export class CandidatesComponent implements OnInit {
   }
 
   private initPageNumber() {
-    const localStorageCandidatesListSize = Number(localStorage.getItem('candidatesListSize'));
+    const localStorageCandidatesListSize = Number(localStorage.getItem('candidatesPageSize'));
 
     if (localStorageCandidatesListSize !== 0) {
       this.pageSize = localStorageCandidatesListSize;
@@ -43,7 +43,13 @@ export class CandidatesComponent implements OnInit {
     }
   }
 
-  handleFindCandidatesButtonClick() {
+  handleChangePageSizeButtonClick(pageSize: number) {
+    this.setCandidatesPageSize(pageSize);
+    this.findCandidates();
+  }
+
+  handleFindCandidatesButtonClick(pageNumber: number) {
+    this.setCandidatesPageNumber(pageNumber);
     this.findCandidates();
   }
 
@@ -62,5 +68,15 @@ export class CandidatesComponent implements OnInit {
   private setupCandidatesPageData(candidatesPage: CandidatePage) {
     this.candidates = candidatesPage.pageContent;
     this.totalPagesNumber = Array(candidatesPage.totalPagesNumber).fill(0).map((x, i) => i);
+  }
+
+  private setCandidatesPageSize(pageSize: number) {
+    this.pageSize = pageSize;
+    localStorage.setItem('candidatesPageSize', String(pageSize));
+  }
+
+  private setCandidatesPageNumber(pageNumber: number) {
+    this.pageNumber = pageNumber;
+    localStorage.setItem('candidatesPageNumber', String(pageNumber));
   }
 }
