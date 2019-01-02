@@ -29,9 +29,9 @@
 
       <div class="candidates__size-buttons">
         <p>Candidates displayed</p>
-        <button class="candidates__size-button">10</button>
-        <button class="candidates__size-button">20</button>
-        <button class="candidates__size-button">30</button>
+        <button (click)="handleChangePageSizeButtonClick(10)" class="candidates__size-button">10</button>
+        <button (click)="handleChangePageSizeButtonClick(20)" class="candidates__size-button">20</button>
+        <button (click)="handleChangePageSizeButtonClick(30)" class="candidates__size-button">30</button>
       </div>
 
       <button (click)="handleFindCandidatesButtonClick()" class="candidates__input-button">Find users</button>
@@ -79,8 +79,8 @@
     </div>
 
     <div class="candidates__pagination">
-      <button class="candidates__page-number">
-        1
+      <button *ngFor="let pageNumber of totalPagesNumber; let i = index" (click)="handleFindCandidatesButtonClick(i)" class="candidates__page-number">
+        {{ pageNumber + 1 }}
       </button>
     </div>
   </div>
