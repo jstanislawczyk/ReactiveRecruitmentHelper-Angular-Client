@@ -44,6 +44,7 @@ export class CandidatesComponent implements OnInit {
   }
 
   handleChangePageSizeButtonClick(pageSize: number) {
+    this.setCandidatesPageNumber(0);
     this.setCandidatesPageSize(pageSize);
     this.findCandidates();
   }
