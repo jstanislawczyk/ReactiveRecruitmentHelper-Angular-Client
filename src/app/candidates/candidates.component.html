@@ -37,6 +37,10 @@
       <button (click)="handleFindCandidatesButtonClick()" class="candidates__input-button">Find users</button>
     </div>
 
+    <div class="candidates__errors">
+      <p *ngIf="findCandidatesErrorOccurred" class="candidates__error-message">Couldn't find candidates. Error occurred</p>
+    </div>
+
     <div class="candidates__list">
       <div *ngFor="let candidate of candidates;" class="candidates__candidate">
         <div class="candidates__candidate-field">
@@ -72,14 +76,14 @@
         <div class="candidates__candidate-field">
           <span class="candidates__candidate-field-title">Technologies: </span>
           <ul>
-            <li *ngFor="let technology of candidate.technologies;" class="candidates__candidate-field-list-element">{{ technology.name }}: {{ technology.knowledgeLevel }}</li>
+            <li *ngFor="let technology of candidate.technologies;" class="candidates__candidate-field-list-element">{{ technology.name }}: {{ technology.knowledgeLevel }} out of 10</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="candidates__pagination">
-      <button *ngFor="let page of totalPagesNumber; let i = index" (click)="handleFindCandidatesButtonClick(i)" [ngClass]="{'candidates__page-number--selected': pageNumber === i }" class="candidates__page-number">
+      <button *ngFor="let page of totalPagesNumber; let i = index" (click)="handleChangePageButtonClick(i)" [ngClass]="{'candidates__page-number--selected': pageNumber === i }" class="candidates__page-number">
         {{ page + 1 }}
       </button>
     </div>

@@ -87,6 +87,11 @@
     @include grey-button;
   }
 
+  &__error-message {
+    margin: 50px auto 0;
+    color: #f00;
+  }
+
   &__list {
     margin: 50px auto;
   }
