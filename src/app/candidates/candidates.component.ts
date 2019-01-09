@@ -12,6 +12,7 @@ export class CandidatesComponent implements OnInit {
 
   constructor(private candidatesService: CandidatesService) { }
 
+  findCandidatesErrorOccurred = false;
   pageNumber = 0;
   pageSize = 10;
   totalPagesNumber: Array<number>;
@@ -27,7 +28,7 @@ export class CandidatesComponent implements OnInit {
     this.initPageSize();
   }
 
-  private initPageNumber() {
+  private initPageSize() {
     const localStorageCandidatesListSize = Number(localStorage.getItem('candidatesPageSize'));
 
     if (localStorageCandidatesListSize !== 0) {
@@ -35,7 +36,7 @@ export class CandidatesComponent implements OnInit {
     }
   }
 
-  private initPageSize() {
+  private initPageNumber() {
     const localStorageCandidatesPageNumber = Number(localStorage.getItem('candidatesPageNumber'));
 
     if (localStorageCandidatesPageNumber !== 0) {
@@ -49,19 +50,28 @@ export class CandidatesComponent implements OnInit {
     this.findCandidates();
   }
 
-  handleFindCandidatesButtonClick(pageNumber: number) {
+  handleFindCandidatesButtonClick() {
+    this.findCandidates();
+  }
+
+  handleChangePageButtonClick(pageNumber: number) {
     this.setCandidatesPageNumber(pageNumber);
     this.findCandidates();
   }
 
   findCandidates() {
     let candidatesPage: CandidatePage;
+    this.candidates = null;
 
     this.candidatesService.findCandidates(this.pageNumber, this.pageSize)
       .subscribe(
         candidates => {
+          this.findCandidatesErrorOccurred = false;
           candidatesPage = <CandidatePage> candidates;
           this.setupCandidatesPageData(candidatesPage);
+        },
+        () => {
+          this.findCandidatesErrorOccurred = true;
         }
       );
   }
