@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CandidatesService } from '../services/candidates-service/candidates-service.service';
 import { CandidatePage } from '../classes/CandidatePage';
 import { Candidate } from '../classes/Candidate';
@@ -11,6 +11,9 @@ import { Candidate } from '../classes/Candidate';
 export class CandidatesComponent implements OnInit {
 
   constructor(private candidatesService: CandidatesService) { }
+
+  @ViewChild('experienceYears') experienceYears: ElementRef;
+  @ViewChild('jobPosition') jobPosition: ElementRef;
 
   findCandidatesErrorOccurred = false;
   pageNumber = 0;
@@ -61,9 +64,11 @@ export class CandidatesComponent implements OnInit {
 
   findCandidates() {
     let candidatesPage: CandidatePage;
+    const jobPosition = this.jobPosition.nativeElement.value;
+    const experienceYears = this.experienceYears.nativeElement.value;
     this.candidates = null;
 
-    this.candidatesService.findCandidates(this.pageNumber, this.pageSize)
+    this.candidatesService.findCandidates(this.pageNumber, this.pageSize, jobPosition, experienceYears)
       .subscribe(
         candidates => {
           this.findCandidatesErrorOccurred = false;

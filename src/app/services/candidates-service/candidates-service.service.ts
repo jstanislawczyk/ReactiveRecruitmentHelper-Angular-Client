@@ -16,9 +16,9 @@ export class CandidatesService {
     private http: HttpClient
   ) { }
 
-  findCandidates(pageNumber: number, pageSize: number): Observable<Object> {
+  findCandidates(pageNumber: number, pageSize: number, jobPosition: string, experienceYears: string): Observable<Object> {
     return this.http
-      .get(this.createCandidatesPaginationUriWithParams(pageNumber, pageSize), this.header);
+      .get(this.createCandidatesPaginationUriWithParams(pageNumber, pageSize, jobPosition, experienceYears), this.header);
   }
 
   private createHeader(): Object {
@@ -31,7 +31,28 @@ export class CandidatesService {
     };
   }
 
-  private createCandidatesPaginationUriWithParams(pageNumber, pageSize) {
+  private createCandidatesPaginationUriWithParams(pageNumber: number, pageSize: number, jobPosition: string, experienceYears: string) {
+    const paginationParams = this.createPaginationParams(pageNumber, pageSize);
+    const filterParams = this.createFilterParams(jobPosition, experienceYears);
+
+    return `${paginationParams}${filterParams}`;
+  }
+
+  private createPaginationParams(pageNumber: number, pageSize: number): string {
     return `${this.candidatesServiceUri}?page=${pageNumber}&size=${pageSize}`;
+  }
+
+  private createFilterParams(jobPosition: string, experienceYears: string): string {
+    let filterParams = '';
+
+    if (jobPosition !== '' && jobPosition !== null) {
+      filterParams += `&jobPosition=${jobPosition}`;
+    }
+
+    if (experienceYears !== '' && experienceYears !== null) {
+      filterParams += `&experienceYears=${experienceYears}`;
+    }
+
+    return filterParams;
   }
 }
