@@ -45,11 +45,11 @@ export class CandidatesService {
   private createFilterParams(jobPosition: string, experienceYears: string): string {
     let filterParams = '';
 
-    if (jobPosition !== '' && jobPosition !== null) {
+    if (!!jobPosition) {
       filterParams += `&jobPosition=${jobPosition}`;
     }
 
-    if (experienceYears !== '' && experienceYears !== null) {
+    if (!!experienceYears) {
       filterParams += `&experienceYears=${experienceYears}`;
     }
 
